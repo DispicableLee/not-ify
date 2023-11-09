@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-
+import SignUpNavHeader from "./SIgnUpNavHeader";
+import "./SignUpFormPage.css"
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
@@ -29,7 +30,7 @@ function SignupFormPage() {
         }
         if (data?.errors) setErrors(data.errors);
             else if (data) setErrors([data]);
-        else setErrors([res.statusText.message]);
+        // else setErrors([res.statusText.message]);
       });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
@@ -40,48 +41,47 @@ function SignupFormPage() {
 // ======================= return statement ===========================
 // debugger
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+    <SignUpNavHeader/>
+    <form onSubmit={handleSubmit} id="signup-form">
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
-      <label>
-        Email
+        {/* Email */}
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
           required
         />
-      </label>
-      <label>
-        Username
+        {/* Username */}
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
           required
         />
-      </label>
-      <label>
-        Password
+        {/* Password */}
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
           required
         />
-      </label>
-      <label>
-        Confirm Password
+        {/* Confirm Password */}
         <input
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm Password"
           required
         />
-      </label>
       <button type="submit">Sign Up</button>
     </form>
+    </>
   );
 }
 
