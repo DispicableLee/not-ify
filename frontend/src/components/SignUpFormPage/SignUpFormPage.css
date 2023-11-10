@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'Circular Spotify Bold';
+    src: local('Circular Spotify Bold'), url(../styling/fonts/Circular_Spotify_Font/CircularSpotifyText-Bold.otf) format("opentype");
+}
+
+@font-face {
+    font-family: 'Circular Book';
+    src: local('Circular Spotify Bold'), url(../styling/fonts/Circular_Spotify_Font/CircularSpotifyText-Book.otf) format("opentype");
+}
+
+#signup-body{
+    background-color: white;
+    height: 100vh;
+}
 #signup-form{
     display: flex;
     flex-direction: column;
@@ -10,11 +24,20 @@
     margin: 5px
 }
 
-button{
+.signup-button{
     height: 30px;
     width: 30%;
     border: none;
     border-radius: 30px;
     background-color: #1DB954;
     box-shadow: none;
+}
+
+h1{
+    font-family: 'Circular Spotify Bold';
+}
+
+h5{
+    font-family: 'Circular Book';
+    font-weight: 100;
 }

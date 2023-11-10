@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import SignUpNavHeader from "./SIgnUpNavHeader";
@@ -13,7 +14,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/home" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,47 +42,48 @@ function SignupFormPage() {
 // ======================= return statement ===========================
 // debugger
   return (
-    <>
-    <SignUpNavHeader/>
-    <form onSubmit={handleSubmit} id="signup-form">
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-        {/* Email */}
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        {/* Username */}
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          required
-        />
-        {/* Password */}
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        {/* Confirm Password */}
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          required
-        />
-      <button type="submit">Sign Up</button>
-    </form>
-    </>
+    <div id="signup-body">
+      <SignUpNavHeader/>
+      <form onSubmit={handleSubmit} id="signup-form">
+        <ul>
+          {errors.map(error => <li key={error}>{error}</li>)}
+        </ul>
+          {/* Email */}
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            required
+          />
+          {/* Username */}
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+            required
+          />
+          {/* Password */}
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            required
+          />
+          {/* Confirm Password */}
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirm Password"
+            required
+          />
+        <button type="submit" className="signup-button">Sign Up</button>
+          <h5>or <Link to="/login">Log In</Link></h5> 
+      </form>
+    </div>
   );
 }
 

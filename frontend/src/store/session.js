@@ -53,7 +53,7 @@ export const signup = (user) => async (dispatch) => {
     })
   });
   const data = await response.json();
-  debugger
+  // debugger
   storeCurrentUser(data.user);
   dispatch(setCurrentUser(data.user));
   return response;
