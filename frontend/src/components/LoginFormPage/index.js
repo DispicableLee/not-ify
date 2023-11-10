@@ -36,6 +36,10 @@ function LoginFormPage() {
   return (
     <div id="login-main">
       <form onSubmit={handleSubmit}>
+        <div className="header">
+          <h1>Log In to Notify</h1>  
+
+        </div>
         <ul>
           {errors.map((error) => (
             <li key={error}>{error}</li>
@@ -61,8 +65,11 @@ function LoginFormPage() {
             required
           />
         </label>
+
+
+        {/* demo login button here */}
         <button type="submit" className="signup-button">Log In</button>
-        <h5>or <Link to="/signup">Sign Up</Link></h5>
+        <h5>Don't have an account? <Link to="/signup">Sign Up for Spotify</Link></h5>
       </form>
     </div>
   );

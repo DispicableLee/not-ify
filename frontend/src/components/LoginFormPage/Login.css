@@ -1,17 +1,29 @@
 #login-main{
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(grey, black);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: white;
 }
 
 #login-main form{
     display: inherit;
+    border-radius: 10px;
+    background-color: black;
     flex-direction: column;
     align-items: center;
-    width: inherit;
-    margin: auto;
+    padding-top: 30px;
+    height: 80%;
+    width: 80%
+}
+
+.header{
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
+    padding-top: 20px
 }
 
 label{
@@ -19,7 +31,20 @@ label{
 }
 
 input{
-    width: 70%;
-    height: 20px;
+    width: 60vw;
+    height: 30px;
     margin: 10px;
+    border: 1px solid grey;
+    background-color: #1c1c1b;
+    -webkit-text-fill-color: white;
+    border-radius: 5px;
+    outline: none
+    /* ali */
 }
+
+input:focus{
+    border: 2px solid white
+}
+
+
+

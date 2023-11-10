@@ -81,7 +81,7 @@ function SignupFormPage() {
             required
           />
         <button type="submit" className="signup-button">Sign Up</button>
-          <h5>or <Link to="/login">Log In</Link></h5> 
+          <h5>Already have an account? <Link to="/login">Log in here.</Link></h5> 
       </form>
     </div>
   );

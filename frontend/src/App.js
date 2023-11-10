@@ -4,6 +4,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignUpFormPage/SignUpFormPage";
 import HomeFeed from "./components/HomeFeed";
 import Navigation from "./components/Navigation";
+import "./reset.css"
 import "./index.css"
 
 function App() {
