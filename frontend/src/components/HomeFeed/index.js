@@ -1,19 +1,20 @@
 import React from "react";
 import LeftBar from "../LeftBar";
+import FeedMain from "../FeedMain";
 import Navigation from "../Navigation";
 import "./HomeFeed.css"
 
-export default function HomeFeed(){
+export default function HomeFeed({signedInUser}){
     return (
-        <div style={{
-            backgroundColor: "black",
-            color: "white",
-            height: "100vh",
-            width: "100vw"
-
-        }}>
-            <Navigation/>
-            <h1>this is the home Feed</h1>
+        <div id="home-body">
+            <aside style={{
+                float: "left"
+            }}>
+                <LeftBar/>
+            </aside>
+            {/* <h1>this is the home Feed</h1> */}
+                <FeedMain signedInUser={signedInUser}/>
+            {/* <Navigation/> */}
         </div>
     )
 }

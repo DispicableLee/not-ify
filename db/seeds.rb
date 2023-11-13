@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# 1. seed in users
+
+
+# 2. seed in tracks
+
+
+# 3. seed in albums
+
+
+# 4. 

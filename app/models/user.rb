@@ -30,10 +30,12 @@ class User < ApplicationRecord
       if credential.match(URI::MailTo::EMAIL_REGEXP)
         isEmail = true
         user = User.find_by(email: credential)
+      else
+        user = User.find_by(username: credential)
       end
 
       
-      user = User.find_by(username: credential)
+      # user = User.find_by(username: credential)
 
       if user&.authenticate(password)
         return user

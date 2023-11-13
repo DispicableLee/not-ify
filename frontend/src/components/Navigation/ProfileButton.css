@@ -7,8 +7,19 @@
 
 
 #profile-button{
+    width: 40px;
+    background-color: white;
+}
 
+.profile-dropdown{
+    background-color: #282828;
+}
 
+.profile-dropdown li{
+    margin-top: 5px;
+    margin-bottom: 5px
+}
 
-    
+.profile-dropdown li:hover{
+    background-color: grey;
 }

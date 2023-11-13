@@ -1,0 +1,19 @@
+#feed-main{
+    /* border: 3px solid white; */
+    /* background-color: blue; */
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+    background-image: linear-gradient(grey, black)
+}
+
+#profile-button-container{
+    /* width: 30px; */
+    float: right;
+    /* background-color: white; */
+}
+
+
+
+
+
