@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import * as sessionActions from '../../store/session';
@@ -44,7 +45,11 @@ function ProfileButton() {
         <ul className="profile-dropdown">
           <li><h4>{user.username}</h4></li>
           <li>{user.email}</li>
-          <li><Link><h4>Profile</h4></Link></li>
+          <li>
+            <Link to={`/profile/${user.id}`}>
+              <h4>Profile</h4>
+            </Link>
+            </li>
           <hr></hr>
           <li onClick={logout}>
             Log Out
