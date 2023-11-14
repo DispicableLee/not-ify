@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import configureStore from './store';
 import csrfFetch, { restoreCSRF } from './store/csrf';
+import { restoreSession } from './store/session';
 import * as sessionActions from "./store/session"
 
 const initialState = {}
@@ -33,11 +34,13 @@ const renderApplication = () => {
   );
 }
 
-if (
-  sessionStorage.getItem("currentUser") === null ||
-  sessionStorage.getItem("X-CSRF-Token") === null 
-) {
+// if (
+//   sessionStorage.getItem("currentUser") === null ||
+//   sessionStorage.getItem("X-CSRF-Token") === null 
+// ) {
+//   // debugger
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
-} else {
-  renderApplication();
-}
+// } else {
+//   // debugger
+//   renderApplication();
+// }

@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignUpFormPage/SignUpFormPage";
 import HomeFeed from "./components/HomeFeed";
 import ProfileShow from "./components/ProfileShow";
+import LeftBar from "./components/LeftBar";
 import Navigation from "./components/Navigation";
 import "./reset.css"
 import "./index.css"
@@ -17,7 +18,8 @@ function App() {
   return (
     <div id="home">
       {/* <Navigation /> */}
-      {/* {signedInUser ? <HomeFeed/> : <LoginFormPage/>} */}
+      {/* {signedInUser ? <LeftBar/> : <></>} */}
+      {signedInUser && <LeftBar/> }
         <Switch>
           <Route exact path="/login">
             <LoginFormPage />
