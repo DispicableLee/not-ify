@@ -40,7 +40,6 @@ function SignupFormPage() {
 
 
 // ======================= return statement ===========================
-// debugger
   return (
     <div id="signup-body">
       <SignUpNavHeader/>

@@ -10,7 +10,7 @@ import './ProfileButton.css'
 
 function ProfileButton() {
   const user = useSelector(store=>store.session.user)
-  console.log(user)
+  // console.log(user)
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   

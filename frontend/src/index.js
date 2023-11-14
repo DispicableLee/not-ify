@@ -38,7 +38,6 @@ const renderApplication = () => {
 //   sessionStorage.getItem("currentUser") === null ||
 //   sessionStorage.getItem("X-CSRF-Token") === null 
 // ) {
-//   // debugger
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 // } else {
 //   // debugger

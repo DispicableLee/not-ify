@@ -33,6 +33,25 @@ function LoginFormPage() {
     );
   };
 
+  function demoLogin(e){
+    e.preventDefault()
+    setErrors([])
+    return dispatch(sessionActions.login({username: "DispicableLee", password: "Asianman2453"})).catch(
+      async (res) => {
+        let data;
+        try {
+          // .clone() essentially allows you to read the response body twice
+          data = await res.clone().json();
+        } catch {
+          data = await res.text(); // Will hit this case if the server is down
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+      }
+    )
+  }
+
   return (
     <div id="login-main">
       <form onSubmit={handleSubmit}>

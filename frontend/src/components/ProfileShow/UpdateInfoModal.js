@@ -21,7 +21,7 @@ export default function UpdateInfoModal(props){
 
     function handleClick(){
         setOpenModal(!openModal)
-        console.log(openModal)
+        // console.log(openModal)
     }
 
     function handleSubmit(e){
