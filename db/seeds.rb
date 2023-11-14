@@ -33,6 +33,6 @@
 
 
 # 3. seed in albums
-
+robs_fun_zone = Album.new({title: "Robs Fun Zone", uploader_id: 2, description: "this is the fun zone of rob"})
 
 # 4. 
