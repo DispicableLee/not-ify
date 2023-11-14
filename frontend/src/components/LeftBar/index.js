@@ -11,6 +11,9 @@ export default function LeftBar(){
                     <img src={homeLogo} className="home-logo"/>
                 </Link>
             </section>
+            <section id="playlist-list">
+
+            </section>
 
         </div>
     )

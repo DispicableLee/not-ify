@@ -1,5 +1,6 @@
 import React from "react";
 import LeftBar from "../LeftBar";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ProfileButton from "../Navigation/ProfileButton";
 import UpdateInfoModal from "./UpdateInfoModal";

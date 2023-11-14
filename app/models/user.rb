@@ -25,6 +25,13 @@ class User < ApplicationRecord
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..255 }, allow_nil: true
 
+
+
+    has_many :albums,
+    class_name: 'Album',
+    foreign_key: :uploader_id,
+    primary_key: :id
+
     def self.find_by_credentials(credential, password)
       isEmail = false
       if credential.match(URI::MailTo::EMAIL_REGEXP)

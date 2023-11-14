@@ -34,9 +34,10 @@ export const fetchAlbums = () => async dispatch =>{
 
 
 
+
 const albumsReducer = (state ={}, action) =>{
     let newState = {...state}
-    switch(album.type){
+    switch(action.type){
         default:
             return newState
 

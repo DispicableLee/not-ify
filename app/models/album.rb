@@ -9,7 +9,8 @@
 #   end
 class Album < ApplicationRecord
     validates :title, presence: :true
-    validates :description, allow_nil: :true
+    # validates :description, allow_nil: :true
+    validates :uploader_id, presence: :true
 
     belongs_to :uploader, 
         class_name: "User", 
