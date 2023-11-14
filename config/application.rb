@@ -35,13 +35,12 @@ module Notify
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-      class Application < Rails::Application
+    config.railties_order = [:all, :main_app]
     # ...
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore,
+      config.middleware.use ActionDispatch::Cookies
+      config.middleware.use ActionDispatch::Session::CookieStore,
       key: 'not_ify_session',
       same_site: :lax, 
       secure: Rails.env.production?
-  end
   end
 end

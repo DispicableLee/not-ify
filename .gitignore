@@ -4,7 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-.byebug_history
 .DS_Store
 # Ignore bundler config.
 /.bundle
@@ -19,6 +18,8 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+.byebug_history
+/public
 
 # Ignore uploaded files in development.
 /storage/*
@@ -26,6 +27,7 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
+
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
