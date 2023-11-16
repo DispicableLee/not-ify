@@ -1,0 +1,23 @@
+#index-div{
+    border: 1px solid white;
+    height: 400px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-box{
+    border: 1px solid white;
+    height: 40%;
+    width: 15%;
+    border-radius: 5px;
+    padding: 10px
+}
+
+.album-image{
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 65%;
+    margin-bottom: 10px;
+}

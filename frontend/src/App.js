@@ -7,6 +7,7 @@ import SignupFormPage from "./components/SignUpFormPage/SignUpFormPage";
 import HomeFeed from "./components/HomeFeed";
 import ProfileShow from "./components/ProfileShow";
 import LeftBar from "./components/LeftBar";
+import AudioFooter from "./AudioFooter";
 import Navigation from "./components/Navigation";
 import "./reset.css"
 import "./index.css"
@@ -20,6 +21,7 @@ function App() {
       {/* <Navigation /> */}
       {/* {signedInUser ? <LeftBar/> : <></>} */}
       {signedInUser && <LeftBar/> }
+      {/* {signedInUser && <AudioFooter/>} */}
         <Switch>
           <Route exact path="/login">
             <LoginFormPage />

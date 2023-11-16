@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../store/user";
 import dotdotdot from "../styling/images/navigation/dotdotdot.png"
 import "./ProfileShow.css"
 
 
-export default function UpdateInfoModal(props){
+export default function UpdateInfoModal({sessionUser}){
     const dispatch = useDispatch()
     const signedInUser = useSelector(store=>store.session.user)
     const [openModal, setOpenModal] = useState(false)
@@ -28,7 +29,8 @@ export default function UpdateInfoModal(props){
         e.preventDefault()
         let body = {email: signedInUser.email, username: formUsername}
         dispatch(updateUser(signedInUser.id, body))
-
+        // return <Redirect to={`/profile/${sessionUser.id}`}/>
+        
     }
 
 

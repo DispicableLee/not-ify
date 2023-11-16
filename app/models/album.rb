@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: albums
+#
+#  id          :bigint           not null, primary key
+#  title       :string           not null
+#  description :text
+#  uploader_id :bigint
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  image_url   :string
+#
 #   create_table "albums", force: :cascade do |t|
 #     t.string "title", null: false
 #     t.text "description"

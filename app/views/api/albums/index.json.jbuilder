@@ -1,7 +1,7 @@
 albums = @albums
 
-json.albums.each do |album|
+albums.each do |album|
     json.set! album.id do
-        json.extract! :title, :description, :image_url
+        json.extract! album, :id, :title, :description, :image_url
     end
 end

@@ -1,0 +1,10 @@
+#audio-footer-main{
+    /* bottom: 0; */
+    background-color: blue;
+    color: white;
+    border-radius: 1px solid black;
+    width: 100px;
+    height: 100px;
+    /* position: absolute; */
+    /* align-self: center; */
+}

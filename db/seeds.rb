@@ -21,6 +21,7 @@
 
 
 # 3. seed in albums
+dummy = Album.create({title: "Dummy", uploader_id: 1, description: "this is a dummy album"}) 
 Album.create({title: "Robs Fun Zone", uploader_id: 1, description: "this is the fun zone of rob"}) 
 Album.create({title: "Tenacious D", uploader_id: 2, description: "hell yeah"})
 
@@ -29,7 +30,7 @@ Album.create({title: "Tenacious D", uploader_id: 2, description: "hell yeah"})
 
 
 # 2. seed in tracks
-
+Track.create({title: "dummyTrack", uploader_idL: 1, album_id: dummy.id, })
 
 
 # 4. 

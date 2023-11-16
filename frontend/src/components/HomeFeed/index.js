@@ -2,6 +2,7 @@ import React from "react";
 import LeftBar from "../LeftBar";
 import FeedMain from "../FeedMain";
 import Navigation from "../Navigation";
+import AudioFooter from "../../AudioFooter";
 import "./HomeFeed.css"
 
 export default function HomeFeed({signedInUser}){
@@ -11,6 +12,10 @@ export default function HomeFeed({signedInUser}){
             {/* <h1>this is the home Feed</h1> */}
                 <FeedMain signedInUser={signedInUser}/>
             {/* <Navigation/> */}
+
+
+
+        <AudioFooter/>
         </div>
     )
 }
