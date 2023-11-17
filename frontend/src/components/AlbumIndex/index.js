@@ -17,7 +17,11 @@ export default function AlbumIndex(props){
     // for(const a of albums) console.log(a)
 
     const renderedAlbumCard = albums.map((a)=>
-        <AlbumCard title={a.title}/>
+        <AlbumCard 
+            id={a.id}
+            title={a.title}
+            description={a.description}
+            />
     )
     return (
         <div id="index-div">

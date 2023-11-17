@@ -1,5 +1,5 @@
 album = @album
 
-json.set! album.id do
+json.album do
     json.extract! album, :id, :title, :description, :image_url
 end

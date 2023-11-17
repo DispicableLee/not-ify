@@ -1,14 +1,20 @@
 import React from "react";
-
-export default function AlbumCard({title}){
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import './AlbumIndex.css'
+export default function AlbumCard({id,title, description}){
+    function goToShow(){
+        console.log("click")
+       
+    }
     return (
-        <div className="card-box">
-            <div className="album-image">
-
+        <Link className="card-box" to={`album/${id}`}>
+            <div onClick={(e)=>goToShow(e)}>
+                <img id="card-image"/>
+                <div>
+                    <h4>{title}</h4>
+                </div>
             </div>
-            <div>
-                <h4>{title}</h4>
-            </div>
-        </div>
+        </Link>
     )
 }

@@ -20,5 +20,7 @@ class Track < ApplicationRecord
         class_name: 'User',
         foreign_key: :uploader_id,
         primary_key: :id
+
+    
     
 end

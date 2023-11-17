@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignUpFormPage/SignUpFormPage";
 import HomeFeed from "./components/HomeFeed";
 import ProfileShow from "./components/ProfileShow";
+import AlbumShow from "./components/AlbumShow";
 import LeftBar from "./components/LeftBar";
 import AudioFooter from "./AudioFooter";
 import Navigation from "./components/Navigation";
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route exact path="/profile/:id">
               <ProfileShow/>
+          </Route>
+          <Route exact path="/album/:id">
+              <AlbumShow/>
           </Route>
         </Switch>
     </div>

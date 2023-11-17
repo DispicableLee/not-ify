@@ -20,6 +20,11 @@ const removeAlbum = album =>({
     album
 })
 
+export const getAlbum = albumId => state => {
+    // debugger
+      return state?.albums ? state.albums[albumId] : null;
+}
+
 export const getAlbums = state => {
   return state?.albums ? Object.values(state.albums) : [];
 }
@@ -33,10 +38,14 @@ export const fetchAlbums = () => async (dispatch) =>{
 }
 
 export const fetchOneAlbum = (albumId) => async dispatch =>{
+    // console.log(albumId.id)
+    // debugger
     const res = await fetch(`/api/albums/${albumId}`)
+
     if(res.ok){
-        let data = res.json()
-        dispatch(recieveAlbum(data))
+        let data = await res.json()
+        // debugger
+        dispatch(recieveAlbum(data.album))
     }
 }
 
