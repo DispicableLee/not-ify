@@ -7,7 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 # require 'database_cleaner'
 # DatabaseCleaner.clean_with(:truncation)
-
+p "destroying Users"
+User.destroy_all
+p "destroying albums"
+Album.destroy_all
+p "destroying tracks"
+Track.destroy_all
 
 
 sonic = User.create({
