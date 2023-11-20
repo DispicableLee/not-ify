@@ -1,10 +1,19 @@
 #audio-footer-main{
-    /* bottom: 0; */
-    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    bottom: 0;
+    background-color: black;
     color: white;
-    border-radius: 1px solid black;
-    width: 100px;
-    height: 100px;
-    /* position: absolute; */
+    /* border-radius: 1px solid black; */
+    width: 100vw;
+    height: 10%;
+    position: absolute;
     /* align-self: center; */
+}
+
+#audio-player{
+    border: 1px solid white;
+    /* height: 10px; */
+    width: 100%;
 }

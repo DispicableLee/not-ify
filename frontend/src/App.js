@@ -22,7 +22,7 @@ function App() {
       {/* <Navigation /> */}
       {/* {signedInUser ? <LeftBar/> : <></>} */}
       {signedInUser && <LeftBar/> }
-      {/* {signedInUser && <AudioFooter/>} */}
+      {signedInUser && <AudioFooter/>}
         <Switch>
           <Route exact path="/login">
             <LoginFormPage />

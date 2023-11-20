@@ -24,15 +24,17 @@ export default function AlbumShow(){
     console.log(tracks)
 
 
-
     const renderedTracks = tracks.map((track)=>{
+        // let trackCount = 1
         return (
             <AlbumTrackItem
                 id={track.id}
                 title={track.title}
                 url={track.url}
+                // count={trackCount}
             />
         )
+        // trackCount++
     })
 
 
@@ -46,9 +48,11 @@ export default function AlbumShow(){
                 <p>Album</p>
                 <h1>{shownAlbum.title}</h1>
             </div>
-                <div id="track-index">
-                    {renderedTracks}
-                </div>
+            <br/>
+            <br/>
+            <div id="track-index">
+                {renderedTracks}
+            </div>
         </div>
     )
 }

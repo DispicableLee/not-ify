@@ -17,13 +17,20 @@
 #home-search{
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    /* justify-content: center; */
     align-items: center;
     width: inherit;
     background-color: #1c1c1b;
     border-radius: 10px;
     height: 20%;
     margin-bottom: 5px;
+}
+
+/* .home-search-link{
+    width: 65%;
+} */
+.home-search-link img{
+    width: 65%;
 }
 
 #playlist-list{

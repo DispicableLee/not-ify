@@ -1,8 +1,12 @@
 import React from "react";
 import './AlbumTrackItem.css'
+import * as sessionActions from '../../store/session'
+import { useDispatch } from "react-redux";
+import { UseSelector } from "react-redux/es/hooks/useSelector";
 
-export default function AlbumTrackItem({id, title, url}){
-
+export default function AlbumTrackItem({id, title, url, count}){
+    const dispatch = useDispatch()
+    console.log(count)
     function loadIntoSession(e){
         e.preventDefault()
         const trackObject = {
@@ -10,6 +14,7 @@ export default function AlbumTrackItem({id, title, url}){
             title,
             url
         }
+        dispatch(sessionActions.setCurrentTrack(trackObject))
     }
 
 
@@ -17,7 +22,7 @@ export default function AlbumTrackItem({id, title, url}){
 
 
     return (
-        <div id="track-main">
+        <div id="track-main" onClick={loadIntoSession}>
             <img/>
             <h3>{title}</h3>
         </div>

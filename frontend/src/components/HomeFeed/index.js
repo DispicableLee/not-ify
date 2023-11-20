@@ -14,8 +14,6 @@ export default function HomeFeed({signedInUser}){
             {/* <Navigation/> */}
 
 
-
-        <AudioFooter/>
         </div>
     )
 }

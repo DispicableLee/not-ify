@@ -1,6 +1,6 @@
 #index-div{
     border: 1px solid white;
-    height: 400px;
+    height: 100%;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -10,8 +10,9 @@
 .card-box{
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
-    height: 40%;
+    /* border: 1px solid white; */
+    background-color: grey;
+    height: 150px;
     width: 15%;
     border-radius: 5px;
     padding: 10px;
@@ -20,9 +21,12 @@
 
 #card-image{
     border: 1px solid white;
-    width: 150px;
-    height: 30%;
+    width: 100px;
     border-radius: 5px;
-    height: 65%;
+    height: 70px;
     margin-bottom: 10px;
+}
+
+h4{
+    text-decoration: none;
 }

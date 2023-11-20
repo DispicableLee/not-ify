@@ -1,8 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './AlbumIndex.css'
 export default function AlbumCard({id,title, description}){
+    const history = useHistory
     function goToShow(){
         console.log("click")
        

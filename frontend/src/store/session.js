@@ -76,9 +76,9 @@ export const logout = () => async (dispatch) => {
 
 const SET_CURRENT_TRACK = "session/setCurrentTrack"
 
-const setCurrentTrack = track => ({
+export const setCurrentTrack = track => ({
   type: SET_CURRENT_TRACK,
-  track
+  payload: track
 })
 
 
@@ -102,6 +102,8 @@ const sessionReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
+    case SET_CURRENT_TRACK:
+      return {...state, currentTrack: action.payload}
     default:
       return state;
   }
