@@ -27,11 +27,10 @@
 }
 
 #track-index{
-    /* position: relative; */
     margin-top: 10px;
-    height: 100vh;
+    height: inherit;
     background-color: black;
-    border: 1px solid white;
+    width: 100%;
     opacity: 0.3;
 }
 

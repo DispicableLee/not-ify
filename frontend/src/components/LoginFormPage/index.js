@@ -36,7 +36,9 @@ function LoginFormPage() {
   function demoLogin(e){
     e.preventDefault()
     setErrors([])
-    return dispatch(sessionActions.login({username: "DispicableLee", password: "Asianman2453"})).catch(
+    setCredential("DispicableLee")
+    setPassword("Asianman2453")
+    return dispatch(sessionActions.login({credential, password})).catch(
       async (res) => {
         let data;
         try {
@@ -87,6 +89,7 @@ function LoginFormPage() {
 
 
         {/* demo login button here */}
+        <button onClick={demoLogin}>Demo Login</button>
         <button type="submit" className="signup-button">Log In</button>
         <h5>Don't have an account? <Link to="/signup">Sign Up for Spotify</Link></h5>
       </form>

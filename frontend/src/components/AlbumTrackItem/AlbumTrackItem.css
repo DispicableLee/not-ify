@@ -1,0 +1,22 @@
+#track-main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: 1px solid white; */
+    gap: 20px;
+    height: 50px;
+    /* background-color: blue; */
+    padding: 5px 10px 5px 10px;
+}
+
+#track-main:hover{
+    background-color: white;
+    opacity: 0.5;
+}
+
+#track-main img{
+    border: 1px solid white;
+    height: 50%;
+    width: 5%;
+}

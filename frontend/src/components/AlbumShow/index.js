@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchOneAlbum, getAlbum } from "../../store/album";
+import AlbumTrackItem from "../AlbumTrackItem";
 import csrfFetch from "../../store/csrf";
 import './AlbumShow.css'
 
@@ -21,6 +22,23 @@ export default function AlbumShow(){
         dispatch(fetchOneAlbum(id))
     },[dispatch])
     console.log(tracks)
+
+
+
+    const renderedTracks = tracks.map((track)=>{
+        return (
+            <AlbumTrackItem
+                id={track.id}
+                title={track.title}
+                url={track.url}
+            />
+        )
+    })
+
+
+
+
+
     return (
         <div id="album-show-main">
             <div id="album-show-header">
@@ -29,7 +47,7 @@ export default function AlbumShow(){
                 <h1>{shownAlbum.title}</h1>
             </div>
                 <div id="track-index">
-
+                    {renderedTracks}
                 </div>
         </div>
     )

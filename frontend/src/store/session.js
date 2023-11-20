@@ -1,5 +1,5 @@
 import csrfFetch from './csrf';
-
+// ================= login/auth stuff ===============================
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
@@ -27,7 +27,7 @@ const storeCurrentUser = user => {
 }
 
 
-// ⁡⁢⁣⁢================ auth stuff =====================⁡
+// ======================= auth actions ==============================⁡
 export const login = (user) => async (dispatch) => {
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
@@ -68,6 +68,18 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+
+
+// ⁡⁢⁢⁡⁣⁣⁢======================== session track actions ===============================⁡⁡
+// ⁡⁣⁣⁢for when the user plays a track, the track's information needs to be loaded into the store⁡
+// ⁡⁣⁣⁢so that the AudioFooter component can use it⁡
+
+const SET_CURRENT_TRACK = "session/setCurrentTrack"
+
+const setCurrentTrack = track => ({
+  type: SET_CURRENT_TRACK,
+  track
+})
 
 
 

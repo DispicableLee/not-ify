@@ -7,7 +7,7 @@ end
 json.tracks do
     tracks.each do |track|
         json.set! track.id do
-            json.extract! track, :title, :url
+            json.extract! track, :id, :title, :url
         end
     end
 end
