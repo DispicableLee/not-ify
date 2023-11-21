@@ -5,89 +5,105 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 import "./AudioFooter.css";
 
 export default function AudioFooter() {
-  const [currentSong, setCurrentSong] = useState();
+    const track = useSelector((store) => store.session.currentTrack);
+    const [progress, setProgress] = useState(0);
+    const [duration, setDuration] = useState(0);
 
-  const [duration, setDuration] = useState(0);
+    const [isReady, setIsReady] = React.useState(false);
+    const [isPlaying, setIsPlaying] = React.useState(false);
 
-  const [isReady, setIsReady] = React.useState(false);
-  const [isPlaying, setIsPlaying] = React.useState(false);
-
-  const track = useSelector((store) => store.session.currentTrack);
-  let audioRef = useRef(null)
+    let audioRef = useRef(null)
 
     useEffect(()=>{
         let audioElement = audioRef.current
-
         if(track && audioElement){
             audioElement.src = track.url
             audioElement.load()
         }
+
+        const updateProgress = () => {
+            const currentProgress = (audioElement?.currentTime / audioElement?.duration) * 100;
+            setProgress(currentProgress);
+        };
+        audioElement.addEventListener('timeupdate', updateProgress);
+        return () => {
+    // Remove the event listener when the component unmounts
+            audioElement.removeEventListener('timeupdate', updateProgress);
+        };
     },[track])
 
 
+// ====== toggles whether or not the song is playing ====================
+    const togglePlayPause = () => {
+        if (isPlaying) {
+        audioRef.current?.pause();
+        setIsPlaying(false);
+        } else {
+        audioRef.current?.play();
+        setIsPlaying(true);
+        }
+    };
+//   console.log((audioRef?.current.duration / 100).toFixed(2))
 
-  console.log(audioRef.current)
-  const togglePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current?.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current?.play();
-      setIsPlaying(true);
-    }
-  };
+    const handleSeek = (e) => {
+        const seekPosition = (e.nativeEvent.offsetX / e.target.clientWidth) * audioRef?.current.duration;
+        audioRef.current.currentTime = seekPosition;
+    };
+    return (
+        <div id="audio-footer-main">
+            <section id="track-info">
+                <h4>{track?.title}</h4>
 
-  return (
-    <div id="audio-footer-main">
-      <h3>audio footer</h3>
+            </section>
 
-      {/* ⁡⁢⁣⁢REACT AUDIO PLAYER⁡⁡ */}
-      {/* <ReactAudioPlayer
-                controls
-                src={track?.url}
-                autoPlay
-            /> */}
+        {/* ⁡⁢⁣⁢REACT AUDIO PLAYER⁡⁡ */}
+        {/* <ReactAudioPlayer
+                    controls
+                    src={track?.url}
+                    autoPlay
+                /> */}
 
-      {/* ⁡⁢⁢⁢================== audio element =================================⁡ */}
-      <audio
-        ref={audioRef}
-        preload="metadata"
-        onDurationChange={(e) => setDuration(e.currentTarget.duration)}
-        onCanPlay={(e) => {
-          setIsReady(true);
-        }}
-        onPlaying={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      >
-        <source type="audio/mpeg" src={track?.url} />
-      </audio>
-      {/* =============================================== */}
-      <div className="text-center mb-1">
-        <p className="text-slate-300 font-bold">
-          {currentSong?.title ?? "Select a song"}
-        </p>
-      </div>
-      {/* ⁡⁢⁣⁢======== play button =============⁡ */}
-      <div style={{
-        color: "white"
-      }}>
-        <div>
-          <button
-            disabled={!isReady}
-            onClick={togglePlayPause}
-            aria-label={isPlaying ? "Pause" : "Play"}
-            size="lg" 
-            > 
-            <PlayArrowIcon/>
-           </button> 
+        {/* ⁡⁣⁢⁣================== audio element =================================⁡⁡ */}
+        <audio
+            id="audio"
+            ref={audioRef}
+            preload="metadata"
+            onDurationChange={(e) => setDuration(e.currentTarget.duration)}
+            onCanPlay={(e) => {
+            setIsReady(true);
+            }}
+            // autoPlay
+            onPlaying={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+        >
+            <source type="audio/mpeg" src={track?.url} />
+        </audio>
+        {/* =============================================== */}
+        {/* ⁡⁢⁣⁢======== play button =============⁡ */}
+            <div id="controls-progress">
+            <button
+                disabled={!isReady}
+                onClick={togglePlayPause}
+                > 
+                    {isPlaying ? <PauseIcon/> :<PlayArrowIcon/>}
+            </button> 
+            <section className="progress-bar-holder">
+                    <h4>{(audioRef.current?.currentTime/10).toFixed(1)}</h4>
+                    <div
+                        className="progress-bar"
+                        onClick={handleSeek}
+                        // style={{ width: `${progress}%` }}
+                    ></div>
+                    <h4>{(audioRef.current?.duration / 100).toFixed(2)}</h4>
+
+            </section>
+            </div>
+
         </div>
-      </div> */}
-
-      {/* ⁡⁣⁣⁢parent div⁡ */}
-    </div>
-  );
+    );
 }
