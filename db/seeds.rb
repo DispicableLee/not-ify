@@ -39,9 +39,9 @@ rob = User.create({
 
 
 # 3. seed in albums
-dummy = Album.create({title: "Dummy", uploader_id: rob.id, description: "this is a dummy album"}) 
-Album.create({title: "Robs Fun Zone", uploader_id: rob.id, description: "this is the fun zone of rob"}) 
-Album.create({title: "Tenacious D", uploader_id: sonic.id, description: "hell yeah"})
+dummy = Album.create({title: "Dummy", uploader_id: rob.id, description: "this is a dummy album", image_url: "https://lemoncord.s3.amazonaws.com/songs/yungvinci_selfportrait.jpg"}) 
+Album.create({title: "Robs Fun Zone", uploader_id: rob.id, description: "this is the fun zone of rob", image_url: "https://lemoncord.s3.amazonaws.com/songs/robsfuncenter.jpeg"}) 
+Album.create({title: "Tenacious D", uploader_id: sonic.id, description: "hell yeah", image_url: "https://lemoncord.s3.amazonaws.com/songs/tenaciousD.jpeg"})
 
 
 
@@ -49,6 +49,6 @@ Album.create({title: "Tenacious D", uploader_id: sonic.id, description: "hell ye
 
 # 2. seed in tracks
 Track.create({title: "Elysian Fields", url: 'https://lemoncord.s3.amazonaws.com/songs/artemis-elysian-fields.mp3', uploader_id: 1, album_id: dummy.id, playlists: []})
-Track.create({title: "HIppies", url: 'https://lemoncord.s3.amazonaws.com/songs/hippies-feat-two-another.mp3', uploader_id: 1, album_id: dummy.id, playlists: []})
-
+Track.create({title: "Hippies", url: 'https://lemoncord.s3.amazonaws.com/songs/hippies-feat-two-another.mp3', uploader_id: 1, album_id: dummy.id, playlists: []})
+Track.create({title: "PYT (The Reflex Revision)", url: "https://lemoncord.s3.amazonaws.com/songs/pyt-the-reflex-revision.mp3", uploader_id: 1, album_id: dummy.id, playlists: []})
 # 4. 

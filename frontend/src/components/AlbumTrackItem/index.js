@@ -1,12 +1,14 @@
 import React from "react";
 import './AlbumTrackItem.css'
 import * as sessionActions from '../../store/session'
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { UseSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
-export default function AlbumTrackItem({id, title, url, count}){
+export default function AlbumTrackItem({id, title, url, listNum}){
+    // const [hover, setHover] = useState(false)
     const dispatch = useDispatch()
-    console.log(count)
+    // console.log(count)
     function loadIntoSession(e){
         e.preventDefault()
         const trackObject = {
@@ -23,7 +25,7 @@ export default function AlbumTrackItem({id, title, url, count}){
 
     return (
         <div id="track-main" onClick={loadIntoSession}>
-            <img/>
+            <h3>{listNum}</h3>
             <h3>{title}</h3>
         </div>
     )

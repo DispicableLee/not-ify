@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    /* border: 1px solid; */
+    justify-content: space-between;
     height: 100vh;
     width: 10vw;
     background-color: black;
@@ -17,7 +16,7 @@
 #home-search{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: space-around;
     align-items: center;
     width: inherit;
     background-color: #1c1c1b;
@@ -29,8 +28,9 @@
 /* .home-search-link{
     width: 65%;
 } */
-.home-search-link img{
-    width: 65%;
+#home-search img{
+    margin: 10px;
+    width: 50px;
 }
 
 #playlist-list{

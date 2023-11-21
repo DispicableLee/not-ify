@@ -21,6 +21,7 @@ export default function AlbumIndex(props){
             id={a.id}
             title={a.title}
             description={a.description}
+            image={a.imageUrl}
             />
     )
     return (

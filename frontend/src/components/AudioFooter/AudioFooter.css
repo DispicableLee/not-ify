@@ -1,15 +1,14 @@
 #audio-footer-main{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     bottom: 0;
     background-color: black;
     color: white;
-    /* border-radius: 1px solid black; */
     width: 100vw;
     height: 10%;
     position: absolute;
-    /* align-self: center; */
 }
 
 #audio-player{

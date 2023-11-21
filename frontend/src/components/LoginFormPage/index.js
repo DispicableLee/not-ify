@@ -28,7 +28,7 @@ function LoginFormPage() {
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+        // else setErrors([res.statusText]);
       }
     );
   };
@@ -49,7 +49,7 @@ function LoginFormPage() {
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+        // else setErrors([res.statusText]);
       }
     )
   }

@@ -31,7 +31,8 @@ class User < ApplicationRecord
     has_many :albums,
     class_name: 'Album',
     foreign_key: :uploader_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
     def self.find_by_credentials(credential, password)
       isEmail = false

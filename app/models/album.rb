@@ -28,5 +28,5 @@ class Album < ApplicationRecord
         class_name: "User", 
         foreign_key: :uploader_id
 
-    has_many :tracks
+    has_many :tracks, dependent: :destroy
 end
