@@ -42,10 +42,7 @@ class User < ApplicationRecord
       else
         user = User.find_by(username: credential)
       end
-
       
-      # user = User.find_by(username: credential)
-
       if user&.authenticate(password)
         return user
       else 
