@@ -2,6 +2,7 @@ import csrfFetch from './csrf';
 // ================= login/auth stuff ===============================
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
+export const RECIEVE_UPDATED_USER = "session/RECIEVE_UPDATED_USER"
 
 const setCurrentUser = (user) => {
   return {
@@ -13,6 +14,13 @@ const setCurrentUser = (user) => {
 const removeCurrentUser = () => {
   return {
     type: REMOVE_CURRENT_USER
+  };
+};
+
+export const updateUserSuccess = (user) => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: user
   };
 };
 
@@ -69,6 +77,26 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+export const updateUser = (userId, body) => async (dispatch) => {
+  try {
+    const res = await csrfFetch(`/api/users/${userId}`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      let data = await res.json();
+      dispatch(setCurrentUser(data.user)); // Dispatch the success action
+    }
+  } catch (error) {
+    console.error("Error updating user:", error);
+    // Handle error if needed
+  }
+};
+
 
 
 // ⁡⁢⁢⁡⁣⁣⁢======================== session track actions ===============================⁡⁡
@@ -102,6 +130,8 @@ const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_USER:
       return { ...state, user: action.payload };
+    case RECIEVE_UPDATED_USER:
+      return {...state, user: action.user}
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
     case SET_CURRENT_TRACK:

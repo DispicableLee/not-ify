@@ -12,14 +12,38 @@
 }
 
 .profile-dropdown{
-    background-color: #282828;
+  position: absolute;
+  top: 60px; /* Adjust the top position as needed */
+  right: 0;
+  background-color: #1e1e1e; /* Spotify's background color */
+  border: 1px solid #282828; /* Spotify's border color */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  min-width: 150px; /* Adjust the width as needed */
+  z-index: 1000;
+  color: white; /* Text color */
+  font-size: 14px;
 }
 
 .profile-dropdown li{
-    margin-top: 5px;
-    margin-bottom: 5px
+  padding: 8px 0;
 }
 
-.profile-dropdown li:hover{
-    background-color: grey;
+.profile-dropdown h4{
+    margin-bottom: 5px;
+}
+
+.profile-dropdown hr {
+  border: 0.5px solid #282828; /* Spotify's border color */
+  margin: 8px 0;
+}
+
+.profile-dropdown a {
+  text-decoration: none;
+  color: white;
+}
+
+.profile-dropdown a:hover {
+  text-decoration: underline;
 }

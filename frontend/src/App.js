@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux/es/hooks/useSelector";
@@ -12,9 +13,15 @@ import AudioFooter from "./components/AudioFooter";
 import Navigation from "./components/Navigation";
 import "./reset.css"
 import "./index.css"
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch()
   const signedInUser = useSelector(store=>store.session.user)
+
+  useEffect(()=>{
+  })
+
   const history = useHistory();
   if (!signedInUser) history.push('/login')
   return (

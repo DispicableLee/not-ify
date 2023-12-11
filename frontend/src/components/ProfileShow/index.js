@@ -8,20 +8,24 @@ import "./ProfileShow.css"
 
 export default function ProfileShow(){
     const sessionUser = useSelector(store=>store.session.user)
-    const [updatedInfo, setUpdatedInfo] = useState(false)   
-    // console.log("hi")
-    useEffect(()=>{
-        console.log("hi")
-    })
+    console.log(sessionUser)
+    const [user, setUser] = useState(sessionUser); // Lifted state
+    useEffect(() => {
+        console.log("ProfileShow component has rerendered");
+    }, [user]); // Add 'user' to the dependency array
+
+    const handleUserUpdate = (updatedUser) => {
+        setUser(updatedUser);
+    };
+
     return (
         <div id="profile-body">
-
             <ProfileButton sessionUser={sessionUser}/>
             <h5>Profile</h5>
             <h1>{sessionUser.username}</h1>
 
             <div id="profile-main-content">
-                <UpdateInfoModal sessionUser={sessionUser}/>
+                <UpdateInfoModal sessionUser={sessionUser} onUserUpdate={handleUserUpdate}/>
             </div>
         </div>
     )

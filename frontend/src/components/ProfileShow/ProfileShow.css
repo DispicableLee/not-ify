@@ -37,6 +37,44 @@ h3{
 }
 
 #modal-form{
-    border: 1px solid white;
-    width: 500px;
+    /* display: none; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1e1e1e; /* Spotify's background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.3); /* Spotify's box shadow */
+  z-index: 1000;
+  color: #fff; /* Text color */
+  width: fit-content; /* Adjust the width as needed */
+}
+
+
+#modal-form h3 {
+  margin-bottom: 20px;
+}
+
+#modal-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-form input {
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #282828; /* Spotify's border color */
+  border-radius: 4px;
+  background-color: #333; /* Spotify's input background color */
+  color: #fff; /* Text color */
+}
+
+#modal-form input[type="submit"] {
+  background-color: #1db954; /* Spotify's primary color */
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
 }

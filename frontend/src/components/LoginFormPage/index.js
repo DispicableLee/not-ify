@@ -89,7 +89,7 @@ function LoginFormPage() {
 
 
         {/* demo login button here */}
-        <button onClick={demoLogin}>Demo Login</button>
+        <button className="signup-button" onClick={(e)=>demoLogin(e)}>Demo Login</button>
         <button type="submit" className="signup-button">Log In</button>
         <h5>Don't have an account? <Link to="/signup">Sign Up for Spotify</Link></h5>
       </form>

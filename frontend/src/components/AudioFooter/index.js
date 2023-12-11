@@ -19,6 +19,14 @@ export default function AudioFooter() {
 
     let audioRef = useRef(null)
 
+      // New function for formatting time
+    const formatTime = (timeInSeconds) => {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = Math.floor(timeInSeconds % 60);
+        return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+    };
+
+
     useEffect(()=>{
         let audioElement = audioRef.current
         if(track && audioElement){
@@ -32,7 +40,6 @@ export default function AudioFooter() {
         };
         audioElement.addEventListener('timeupdate', updateProgress);
         return () => {
-    // Remove the event listener when the component unmounts
             audioElement.removeEventListener('timeupdate', updateProgress);
         };
     },[track])
@@ -48,7 +55,6 @@ export default function AudioFooter() {
         setIsPlaying(true);
         }
     };
-//   console.log((audioRef?.current.duration / 100).toFixed(2))
 
     const handleSeek = (e) => {
         const seekPosition = (e.nativeEvent.offsetX / e.target.clientWidth) * audioRef?.current.duration;
@@ -58,52 +64,47 @@ export default function AudioFooter() {
         <div id="audio-footer-main">
             <section id="track-info">
                 <h4>{track?.title}</h4>
-
             </section>
-
-        {/* ⁡⁢⁣⁢REACT AUDIO PLAYER⁡⁡ */}
-        {/* <ReactAudioPlayer
-                    controls
-                    src={track?.url}
-                    autoPlay
-                /> */}
-
-        {/* ⁡⁣⁢⁣================== audio element =================================⁡⁡ */}
+        {/* ⁡⁣⁢⁡⁢⁣⁢================== audio element =================================⁡⁡⁡ */}
         <audio
             id="audio"
             ref={audioRef}
             preload="metadata"
             onDurationChange={(e) => setDuration(e.currentTarget.duration)}
-            onCanPlay={(e) => {
-            setIsReady(true);
-            }}
-            // autoPlay
+            onCanPlay={(e) => setIsReady(true)}
             onPlaying={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
+            autoPlay
         >
             <source type="audio/mpeg" src={track?.url} />
         </audio>
         {/* =============================================== */}
         {/* ⁡⁢⁣⁢======== play button =============⁡ */}
+        {track && 
             <div id="controls-progress">
-            <button
-                disabled={!isReady}
-                onClick={togglePlayPause}
-                > 
-                    {isPlaying ? <PauseIcon/> :<PlayArrowIcon/>}
-            </button> 
-            <section className="progress-bar-holder">
-                    <h4>{(audioRef.current?.currentTime/10).toFixed(1)}</h4>
-                    <div
-                        className="progress-bar"
-                        onClick={handleSeek}
-                        // style={{ width: `${progress}%` }}
-                    ></div>
-                    <h4>{(audioRef.current?.duration / 100).toFixed(2)}</h4>
-
-            </section>
+                <button
+                    disabled={!isReady}
+                    onClick={togglePlayPause}
+                    > 
+                        {isPlaying ? <PauseIcon/> :<PlayArrowIcon/>}
+                </button> 
+                <section className="progress-bar-holder">
+                    {/* Use the formatTime function for displaying time */}
+                    <h4>{formatTime(audioRef.current?.currentTime)}</h4>
+                    {/* Dynamically set the width based on the progress */}
+                    <div className="progress-bar-wrapper" onClick={handleSeek}>
+                        <div
+                            className="progress-bar"
+                        
+                            style={{ width: `${progress}%` }}
+                        />
+                    </div>
+                    {/* Use the formatTime function for displaying duration */}
+                    <h4>{formatTime(audioRef.current?.duration)}</h4>
+                        
+                </section>
             </div>
-
+        }
         </div>
     );
 }

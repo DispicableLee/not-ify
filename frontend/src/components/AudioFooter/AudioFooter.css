@@ -23,7 +23,7 @@
     width: 400px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
     /* border: 1px solid white; */
 }
@@ -37,15 +37,21 @@
 .progress-bar-holder{
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: inherit;
+}
+
+.progress-bar-wrapper {
+  width: 100%;
+  background-color: #ccc; /* Set your desired background color */
+  height: 8px; /* Set your desired height */
+  border-radius: 4px; /* Add rounded corners if desired */
+  overflow: hidden;
 }
 
 
 .progress-bar{
-    border: 1px solid white;
-    height: 10px;
-    width: 100%;
-    /* background-color: #007bff; */
-    cursor: pointer;
-    color: white;
+    /* background-color: 1px solid white; */
+  height: 100%;
+  background-color: #2ecc71; /* Set your desired fill color */
 }

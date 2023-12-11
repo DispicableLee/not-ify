@@ -11,9 +11,7 @@ export default function AlbumShow(){
     const [tracks, setTracks] = useState()
     const dispatch = useDispatch()
     const {id} = useParams()
-    console.log(id)
     const shownAlbum = useSelector(getAlbum(id))
-    console.log(shownAlbum)
 
     useEffect(()=>{
         fetch(`/api/albums/${id}`)
@@ -24,7 +22,6 @@ export default function AlbumShow(){
         })
         dispatch(fetchOneAlbum(id))
     },[dispatch])
-    console.log(tracks)
 
 
     const renderedTracks = tracks?.map((track, idx)=>{
@@ -45,9 +42,9 @@ export default function AlbumShow(){
     return (
         <div id="album-show-main">
             <div id="album-show-header">
-                <img src={shownAlbum.imageUrl}/>
+                <img src={shownAlbum?.imageUrl}/>
                 <p>Album</p>
-                <h1>{shownAlbum.title}</h1>
+                <h1>{shownAlbum?.title}</h1>
             </div>
             <br/>
             <br/>

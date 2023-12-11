@@ -14,7 +14,7 @@ export default function FeedMain({signedInUser}){
                     <ProfileButton signedInUser={signedInUser}/>
                 </div>
                 <h1>Good Morning</h1>
-                <h2>i hate this pls work</h2>
+                {/* <h2>i hate this pls work</h2> */}
                 <AlbumIndex/>
         </div>
     )

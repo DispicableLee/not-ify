@@ -1,9 +1,8 @@
 /* TODO Add site wide styles */
 #home{
-    /* background-color: black; */
     display: flex;
     height: 100vh;
+    width: 100vw;
     padding-top: 10px;
     background-color: black;
-
 }
