@@ -8,7 +8,7 @@ import "./HomeFeed.css"
 export default function HomeFeed({signedInUser}){
     return (
         <div id="home-body">
-
+            
             {/* <h1>this is the home Feed</h1> */}
                 <FeedMain signedInUser={signedInUser}/>
             {/* <Navigation/> */}

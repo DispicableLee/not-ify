@@ -37,12 +37,8 @@ class Api::AlbumsController < ApplicationController
         @album.destroy
     end
 
-
-
-
-
     private
     def album_params
-        params.require(:album).permit[:title, :uploader_id, :description]
+        params.require(:album).permit(:title, :uploader_id, :description)
     end
 end

@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { loadPlaylist } from "./session";
 
 export const RECIEVE_ALBUMS = 'albums/RECIEVE_ALBUMS'
 const recieveAlbums = albums => ({
@@ -41,11 +42,12 @@ export const fetchOneAlbum = (albumId) => async dispatch =>{
     // console.log(albumId.id)
     // debugger
     const res = await fetch(`/api/albums/${albumId}`)
-
     if(res.ok){
         let data = await res.json()
-        // debugger
-        dispatch(recieveAlbum(data.album))
+        if(data.tracks){
+            dispatch(loadPlaylist(Object.values(data.tracks)))
+        }
+        dispatch(recieveAlbum(data))
     }
 }
 
@@ -77,9 +79,9 @@ const albumsReducer = (state ={}, action) =>{
     let newState = {...state}
     switch(action.type){
         case RECIEVE_ALBUMS:
-            return {...action.albums}
+            return {...state, albums: action.albums}
         case RECIEVE_ALBUM:
-            return { ...state, [action.album.id]: action.album };
+            return { ...state, shownAlbum: action.album };
         default:
             return newState
 

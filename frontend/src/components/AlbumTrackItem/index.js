@@ -27,9 +27,10 @@ export default function AlbumTrackItem({id, title, url, listNum}){
     return (
         <div 
             id="track-main" 
+            role="button"
             onClick={loadIntoSession} 
-            onMouseEnter={()=>setHover(!hover)}
-            onMouseLeave={()=>setHover(!hover)}
+            onMouseEnter={() => setHover((prevHover) => !prevHover)}
+            onMouseLeave={() => setHover((prevHover) => !prevHover)}
         >
 
             {hover ? <PlayArrow/> : <h3>{listNum}</h3>}

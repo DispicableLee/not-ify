@@ -3,6 +3,23 @@ import csrfFetch from './csrf';
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 export const RECIEVE_UPDATED_USER = "session/RECIEVE_UPDATED_USER"
+const LOAD_PLAYLIST = 'session/LOAD_PLAYLIST'
+
+
+
+// ===== loading a playlist of tracks ==============
+export const loadPlaylist = (playlist) => ({
+  type: LOAD_PLAYLIST,
+  playlist,
+});
+// ======== skipping forwards/backwards in a playlist
+export const skipForward = () => ({
+  type: 'SKIP_FORWARD',
+});
+
+export const skipBackward = () => ({
+  type: 'SKIP_BACKWARD',
+});
 
 const setCurrentUser = (user) => {
   return {
@@ -136,6 +153,29 @@ const sessionReducer = (state = initialState, action) => {
       return { ...state, user: null };
     case SET_CURRENT_TRACK:
       return {...state, currentTrack: action.payload}
+    case LOAD_PLAYLIST:
+      return {...state, playlist: action.playlist};
+    case 'SKIP_FORWARD':
+      // Logic to select the next track from the playlist
+      const currentIndex = state.playlist.findIndex((track) => track === state.currentTrack);
+      const nextIndex = (currentIndex + 1) % state.playlist.length;
+      const nextTrack = state.playlist[nextIndex];
+
+      return {
+        ...state,
+        currentTrack: nextTrack,
+      };
+
+    case 'SKIP_BACKWARD':
+      // Logic to select the previous track from the playlist
+      // currentIndex = state.playlist.findIndex((track) => track === state.currentTrack);
+      const prevIndex = (currentIndex - 1 + state.playlist.length) % state.playlist.length;
+      const prevTrack = state.playlist[prevIndex];
+
+      return {
+        ...state,
+        currentTrack: prevTrack,
+      };
     default:
       return state;
   }

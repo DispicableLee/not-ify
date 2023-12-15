@@ -1,14 +1,17 @@
-#audio-footer-main{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    bottom: 0;
-    background-color: black;
-    color: white;
-    width: 100vw;
-    height: 10%;
-    position: absolute;
+#audio-footer-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #282828; /* Spotify's background color for controls */
+  padding: 10px;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#track-info {
+  margin-bottom: 10px;
 }
 
 #audio-player{
@@ -28,30 +31,48 @@
     /* border: 1px solid white; */
 }
 
-#controls-progress button{
-    height: 40%;
-    width: 80px;
-    border-radius: 90px;
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 20px;
+  color: white;
+}
+.MuiButtonBase-root {
+  padding: 6px; /* Adjust the padding around the IconButton */
+  color: white;
 }
 
-.progress-bar-holder{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: inherit;
+
+button:disabled {
+  color: #555555; /* Adjust the disabled button color */
+}
+
+.progress-bar-holder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
 }
 
 .progress-bar-wrapper {
-  width: 100%;
-  background-color: #ccc; /* Set your desired background color */
-  height: 8px; /* Set your desired height */
-  border-radius: 4px; /* Add rounded corners if desired */
-  overflow: hidden;
+  flex-grow: 1;
+  margin: 0 10px;
+  cursor: pointer;
 }
 
 
-.progress-bar{
-    /* background-color: 1px solid white; */
-  height: 100%;
-  background-color: #2ecc71; /* Set your desired fill color */
+.progress-bar {
+  height: 5px;
+  background-color: #1db954; /* Spotify's green color */
+  width: 0; /* Will be dynamically set based on the progress */
+  transition: width 0.3s ease; /* Add a smooth transition effect */
+}
+
+h4 {
+  font-size: 14px;
+  margin: 0;
 }

@@ -5,11 +5,16 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PauseIcon from '@mui/icons-material/Pause';
+import { skipForward, skipBackward } from "../../store/session";
+import { useDispatch } from "react-redux";
 
 import "./AudioFooter.css";
 
 export default function AudioFooter() {
+    const dispatch = useDispatch()
     const track = useSelector((store) => store.session.currentTrack);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -24,6 +29,14 @@ export default function AudioFooter() {
         const minutes = Math.floor(timeInSeconds / 60);
         const seconds = Math.floor(timeInSeconds % 60);
         return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+    };
+
+    const handleSkipForward = () => {
+        dispatch(skipForward());
+    };
+
+    const handleSkipBackward = () => {
+        dispatch(skipBackward());
     };
 
 
@@ -82,12 +95,21 @@ export default function AudioFooter() {
         {/* ⁡⁢⁣⁢======== play button =============⁡ */}
         {track && 
             <div id="controls-progress">
-                <button
-                    disabled={!isReady}
-                    onClick={togglePlayPause}
+                <div>
+                    <IconButton onClick={handleSkipBackward} disabled={!isReady} style={{color: "white"}}>
+                        <SkipPreviousIcon />
+                    </IconButton>
+                    <button
+                        disabled={!isReady}
+                        onClick={togglePlayPause}
                     > 
-                        {isPlaying ? <PauseIcon/> :<PlayArrowIcon/>}
-                </button> 
+                            {isPlaying ? <PauseIcon/> :<PlayArrowIcon/>}
+                    </button> 
+                    <IconButton onClick={handleSkipForward} disabled={!isReady} style={{color: "white"}}>
+                        <SkipNextIcon />
+                    </IconButton>
+                </div>
+
                 <section className="progress-bar-holder">
                     {/* Use the formatTime function for displaying time */}
                     <h4>{formatTime(audioRef.current?.currentTime)}</h4>

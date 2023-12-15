@@ -21,6 +21,10 @@
   "bugs": {
     "url": "https://github.com/DispicableLee/not-ify/issues"
   },
-  "homepage": "https://github.com/DispicableLee/not-ify#readme"
-
+  "homepage": "https://github.com/DispicableLee/not-ify#readme",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.20"
+  }
 }

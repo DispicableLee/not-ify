@@ -3,8 +3,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
-    width: 10vw;
+    /* border: 1px solid white; */
+    height: 86.5%;
+    width: 5vw;
     background-color: black;
     border-radius: 5px;
     margin-right: 10px;
@@ -19,15 +20,21 @@
     justify-content: space-around;
     align-items: center;
     width: inherit;
-    background-color: #1c1c1b;
     border-radius: 10px;
     height: 20%;
     margin-bottom: 5px;
+    background-color: #1c1c1b;
 }
 
-/* .home-search-link{
-    width: 65%;
-} */
+.home-logo, .search-logo {
+  width: 50%; /* Adjust the size of icons */
+
+}
+
+.home-logo:hover, #search-logo:hover {
+  filter: brightness(1.5); /* Add a brightness effect on hover */
+}
+
 #home-search img{
     margin: 10px;
     width: 50px;
@@ -38,7 +45,6 @@
     border-radius: 10px;
     width: inherit;
     height: 80%;
-
 }
 
 .home-logo{

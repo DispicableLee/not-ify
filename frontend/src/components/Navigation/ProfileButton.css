@@ -6,28 +6,39 @@
 
 
 
-#profile-button{
-    width: 40px;
-    background-color: white;
+#profile-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  background-color: white;
 }
 
-.profile-dropdown{
+#profile-button:hover {
+  background-color: #333; /* Dark background color on hover */
+}
+
+.profile-dropdown {
   position: absolute;
-  top: 60px; /* Adjust the top position as needed */
-  right: 0;
-  background-color: #1e1e1e; /* Spotify's background color */
-  border: 1px solid #282828; /* Spotify's border color */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  top: 80px; /* Adjust the distance from the button as needed */
+  right: 10px;
+  list-style-type: none;
   padding: 10px;
-  min-width: 150px; /* Adjust the width as needed */
-  z-index: 1000;
-  color: white; /* Text color */
-  font-size: 14px;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.profile-dropdown li{
-  padding: 8px 0;
+.profile-dropdown li {
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.profile-dropdown li:hover {
+  background-color: #555; /* Darker background color on hover */
 }
 
 .profile-dropdown h4{

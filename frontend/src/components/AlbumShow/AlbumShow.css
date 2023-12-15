@@ -1,6 +1,7 @@
 #album-show-main{
     width: 100%;
     background-image: linear-gradient(grey,black);
+    padding: 20px;
 }
 
 
@@ -13,7 +14,9 @@
     width: 100%;
     padding-top: 100px;
     color: white;
-    padding-bottom: 30px
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: row;
 }
 
 #album-show-header img{
@@ -26,12 +29,15 @@
     /* margin-bottom: 20px */
 }
 
-#track-index{
-    margin-top: 10px;
-    height: inherit;
-    background-color: black;
-    width: 100%;
-    opacity: 0.3;
+/* #album-show-header h1 {
+  font-size: 36px;
+  margin: 0;
+} */
+
+
+#track-index {
+    display: flex;
+    flex-direction: column;
 }
 
 h1{

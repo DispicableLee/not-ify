@@ -1,8 +1,8 @@
 import React from "react";
 import "./LeftBar.css"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import homeLogo from '../styling/images/navigation/home.png'
-import searchLogo from '../styling/images/navigation/search-logo.png'
+import HomeIcon from "@mui/icons-material/Home";
+import SearchIcon from "@mui/icons-material/Search";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 export default function LeftBar(){
@@ -14,8 +14,12 @@ export default function LeftBar(){
     return (
         <div id="left-main">
             <section id="home-search">
-                    <img src={homeLogo} className="home-logo" onClick={navToHome}/>
-                    <img src={searchLogo}/>
+                <Link to="/home">
+                    <HomeIcon className="home-logo" />
+                </Link>
+                <Link to="/search">
+                    <SearchIcon className="search-logo" />
+                </Link>
             </section>
             <section id="playlist-list">
 

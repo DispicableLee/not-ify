@@ -2,29 +2,26 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { fetchOneAlbum, getAlbum } from "../../store/album";
+import { fetchOneAlbum, getAlbum, updateAlbum } from "../../store/album";
+import { loadPlaylist } from "../../store/session";
 import AlbumTrackItem from "../AlbumTrackItem";
 import csrfFetch from "../../store/csrf";
 import './AlbumShow.css'
 
 export default function AlbumShow(){
-    const [tracks, setTracks] = useState()
-    const dispatch = useDispatch()
     const {id} = useParams()
-    const shownAlbum = useSelector(getAlbum(id))
-
+    const shownAlbum = useSelector(store=>store.albums?.shownAlbum?.album)
+    const shownTracks = useSelector(store=>store.albums?.shownAlbum?.tracks)
+    const [tracks, setTracks] = useState(Object.values(shownTracks))
+    const [canEdit, setCanEdit] = useState(false)
+    const [formAlbumName, setFormAlbumName] = useState(shownAlbum?.title)
+    const dispatch = useDispatch()
     useEffect(()=>{
-        fetch(`/api/albums/${id}`)
-        .then((res)=>res.json())
-        .then(json=>{
-            console.log(json)
-            setTracks(Object.values(json.tracks || []))
-        })
         dispatch(fetchOneAlbum(id))
     },[dispatch])
 
 
-    const renderedTracks = tracks?.map((track, idx)=>{
+    const renderedTracks = tracks.map((track, idx)=>{
         return (
             <AlbumTrackItem
                 id={track.id}
@@ -35,6 +32,13 @@ export default function AlbumShow(){
         )
     })
 
+    function handleUpdate(){
+        const updateAlbumObj = {
+            title: formAlbumName
+        }
+        dispatch(updateAlbum(id, updateAlbumObj))
+        setCanEdit(false)
+    }
 
 
 
@@ -43,8 +47,23 @@ export default function AlbumShow(){
         <div id="album-show-main">
             <div id="album-show-header">
                 <img src={shownAlbum?.imageUrl}/>
-                <p>Album</p>
-                <h1>{shownAlbum?.title}</h1>
+                <div style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "5px"
+                }}>
+                    <p>Album</p>
+                    {canEdit ? 
+                        <input type="text"
+                        defaultValue={shownAlbum?.title}
+                        onChange={(e)=>setFormAlbumName(e.target.value)}
+                        />
+                    : 
+                        <h1>{shownAlbum?.title}</h1>
+                    }
+                    <button onClick={()=>setCanEdit(!canEdit)}>Edit Album</button>
+                    {canEdit && <button onClick={handleUpdate}>Save Changes</button>}
+                </div>
             </div>
             <br/>
             <br/>
