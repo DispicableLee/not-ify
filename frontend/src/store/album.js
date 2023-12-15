@@ -1,17 +1,17 @@
 import csrfFetch from "./csrf";
 import { loadPlaylist } from "./session";
 
-export const RECIEVE_ALBUMS = 'albums/RECIEVE_ALBUMS'
+export const RECEIVE_ALBUMS = 'albums/RECIEVE_ALBUMS'
 const recieveAlbums = albums => ({
-    type: RECIEVE_ALBUMS,
+    type: RECEIVE_ALBUMS,
     albums
 })
 
 
-export const RECIEVE_ALBUM = "albums/RECIEVE_ALBUM"
+export const RECEIVE_ALBUM = "albums/RECIEVE_ALBUM"
 
-const recieveAlbum = album => ({
-    type: RECIEVE_ALBUM,
+const receiveAlbum = album => ({
+    type: RECEIVE_ALBUM,
     album
 })
 
@@ -31,23 +31,31 @@ export const getAlbums = state => {
 }
 
 export const fetchAlbums = () => async (dispatch) =>{
-    const res = await csrfFetch('/api/albums')
-    if(res.ok){
-        let data = await res.json()
-        dispatch(recieveAlbums(data))
+    try {
+        const res = await csrfFetch('/api/albums');
+
+        if (!res.ok) {
+            throw new Error('Failed to fetch albums');
+        }
+
+        const data = await res.json();
+        dispatch(recieveAlbums(data));
+    } catch (error) {
+        console.error('Error fetching albums:', error);
+        // Handle error as needed, e.g., dispatch an action to set an error state in your Redux store.
     }
-}
+};
 
 export const fetchOneAlbum = (albumId) => async dispatch =>{
     // console.log(albumId.id)
     // debugger
-    const res = await fetch(`/api/albums/${albumId}`)
+    const res = await csrfFetch(`/api/albums/${albumId}`)
     if(res.ok){
         let data = await res.json()
         if(data.tracks){
             dispatch(loadPlaylist(Object.values(data.tracks)))
         }
-        dispatch(recieveAlbum(data))
+        dispatch(receiveAlbum(data))
     }
 }
 
@@ -61,7 +69,7 @@ export const updateAlbum = (albumId, body) => async dispatch =>{
     })
     if(res.ok){
         let data = res.json()
-        dispatch(recieveAlbum(data))
+        dispatch(receiveAlbum(data))
     }
 }
 
@@ -78,13 +86,12 @@ export const deleteAlbum = (albumId) => async dispatch =>{
 const albumsReducer = (state ={}, action) =>{
     let newState = {...state}
     switch(action.type){
-        case RECIEVE_ALBUMS:
+        case RECEIVE_ALBUMS:
             return {...state, albums: action.albums}
-        case RECIEVE_ALBUM:
+        case RECEIVE_ALBUM:
             return { ...state, shownAlbum: action.album };
         default:
             return newState
-
     }
 }
 

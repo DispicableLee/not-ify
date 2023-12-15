@@ -4,33 +4,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchOneAlbum, getAlbum, updateAlbum } from "../../store/album";
 import { loadPlaylist } from "../../store/session";
-import AlbumTrackItem from "../AlbumTrackItem";
 import csrfFetch from "../../store/csrf";
+import AlbumTrackItem from "../AlbumTrackItem";
 import './AlbumShow.css'
 
 export default function AlbumShow(){
+    const dispatch = useDispatch()
     const {id} = useParams()
     const shownAlbum = useSelector(store=>store.albums?.shownAlbum?.album)
-    const shownTracks = useSelector(store=>store.albums?.shownAlbum?.tracks)
-    const [tracks, setTracks] = useState(Object.values(shownTracks))
+    const [tracks, setTracks] = useState()
     const [canEdit, setCanEdit] = useState(false)
     const [formAlbumName, setFormAlbumName] = useState(shownAlbum?.title)
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(fetchOneAlbum(id))
-    },[dispatch])
+    useEffect(() => {
+        fetch(`/api/albums/${id}`)
+        .then((res)=>res.json())
+        .then((json)=>setTracks(Object.values(json.tracks)))
+        dispatch(fetchOneAlbum(id));
+    }, [dispatch]);
+        const renderedTracks = tracks.map((track, idx)=>{
+            return (
+                <AlbumTrackItem
+                    id={track.id}
+                    title={track.title}
+                    url={track.url}
+                    listNum={idx+1}
+                />
+            )
+        })
 
-
-    const renderedTracks = tracks.map((track, idx)=>{
-        return (
-            <AlbumTrackItem
-                id={track.id}
-                title={track.title}
-                url={track.url}
-                listNum={idx+1}
-            />
-        )
-    })
 
     function handleUpdate(){
         const updateAlbumObj = {
