@@ -2,25 +2,30 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { fetchOneAlbum, getAlbum, updateAlbum } from "../../store/album";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { fetchOneAlbum, getAlbum, updateAlbum, deleteAlbum } from "../../store/album";
 import { loadPlaylist } from "../../store/session";
 import csrfFetch from "../../store/csrf";
 import AlbumTrackItem from "../AlbumTrackItem";
 import './AlbumShow.css'
 
 export default function AlbumShow(){
+    const history = useHistory()
     const dispatch = useDispatch()
     const {id} = useParams()
     const shownAlbum = useSelector(store=>store.albums?.shownAlbum?.album)
+    const currentUser = useSelector(store=> store?.session?.user)
+    const authorizedUser = shownAlbum?.uploaderId === currentUser?.id
     const [tracks, setTracks] = useState()
     const [canEdit, setCanEdit] = useState(false)
+    const [canDelete, setCanDelete] = useState(false)
     const [formAlbumName, setFormAlbumName] = useState(shownAlbum?.title)
+
     useEffect(() => {
         fetch(`/api/albums/${id}`)
             .then((res) => res.json())
             .then((json) => {
-                console.log(Object.values(json.tracks))
-                setTracks(Object.values(json.tracks)); // Use an empty array if tracks are undefined
+                if(json.tracks) setTracks(Object.values(json.tracks)); // Use an empty array if tracks are undefined
             })
         dispatch(fetchOneAlbum(id));
     }, [dispatch, setTracks]);
@@ -43,6 +48,13 @@ export default function AlbumShow(){
     }
 
 
+   function confirmDelete(){
+        dispatch(deleteAlbum(id))
+        history.push("/home")
+    }
+
+
+
 
 
     return (
@@ -63,9 +75,20 @@ export default function AlbumShow(){
                     : 
                         <h1>{shownAlbum?.title}</h1>
                     }
-                    <button onClick={()=>setCanEdit(!canEdit)}>Edit Album</button>
+                    {authorizedUser && <button onClick={()=>setCanEdit(!canEdit)}>Edit Album</button>}
                     {canEdit && <button onClick={handleUpdate}>Save Changes</button>}
+                    {authorizedUser ? <button onClick={()=>setCanDelete(true)}>Delete Album</button> : <></>}
                 </div>
+                {canDelete && <div className="confirm-delete-div">
+                        <h2>Are you sure you want to delete this album?</h2>
+                        <section className="bottom-bar"> 
+                            <button className="cancel-delete-button" onClick={()=>setCanDelete(false)}>Cancel</button>
+                            <button className="confirm-delete-button"
+                                onClick={confirmDelete}
+                            >
+                                Delete this Album</button>
+                        </section>
+                    </div>}
             </div>
             <br/>
             <br/>

@@ -1,7 +1,7 @@
 album = @album
 tracks = @album.tracks
 json.album do
-    json.extract! album, :id, :title, :description, :image_url
+    json.extract! album, :id, :title, :description, :image_url, :uploader_id
 end
 
 json.tracks do

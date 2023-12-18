@@ -68,17 +68,17 @@ export const updateAlbum = (albumId, body) => async dispatch =>{
         }
     })
     if(res.ok){
-        let data = res.json()
+        let data = await res.json()
         dispatch(receiveAlbum(data))
     }
 }
 
 export const deleteAlbum = (albumId) => async dispatch =>{
-    const res = await csrfFetch(`api/albums/${albumId}`, {
+    const res = await csrfFetch(`/api/albums/${albumId}`, {
         method: "DELETE"
     })
     if(res.ok){
-        let data = res.json()
+        let data = await res.json()
         dispatch(removeAlbum(data))
     }
 }
@@ -90,6 +90,9 @@ const albumsReducer = (state ={}, action) =>{
             return {...state, albums: action.albums}
         case RECEIVE_ALBUM:
             return { ...state, shownAlbum: action.album };
+        case REMOVE_ALBUM:
+            const updatedAlbums = state.albums.filter(album => album.id !== action.album.id);
+            return { ...state, albums: updatedAlbums };
         default:
             return newState
     }
