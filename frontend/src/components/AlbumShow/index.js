@@ -17,20 +17,21 @@ export default function AlbumShow(){
     const [formAlbumName, setFormAlbumName] = useState(shownAlbum?.title)
     useEffect(() => {
         fetch(`/api/albums/${id}`)
-        .then((res)=>res.json())
-        .then((json)=>setTracks(Object.values(json.tracks)))
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(Object.values(json.tracks))
+                setTracks(Object.values(json.tracks)); // Use an empty array if tracks are undefined
+            })
         dispatch(fetchOneAlbum(id));
-    }, [dispatch]);
-        const renderedTracks = tracks.map((track, idx)=>{
-            return (
-                <AlbumTrackItem
-                    id={track.id}
-                    title={track.title}
-                    url={track.url}
-                    listNum={idx+1}
-                />
-            )
-        })
+    }, [dispatch, setTracks]);
+    const renderedTracks = tracks ? Object.values(tracks).map((track, idx) => (
+        <AlbumTrackItem
+            id={track.id}
+            title={track.title}
+            url={track.url}
+            listNum={idx + 1}
+        />
+    )) : null;
 
 
     function handleUpdate(){
