@@ -29,11 +29,13 @@ export default function AlbumShow(){
             })
         dispatch(fetchOneAlbum(id));
     }, [dispatch, setTracks]);
+    console.log(tracks)
     const renderedTracks = tracks ? Object.values(tracks).map((track, idx) => (
         <AlbumTrackItem
             id={track.id}
             title={track.title}
             url={track.url}
+            image={track.album.imageUrl}
             listNum={idx + 1}
         />
     )) : null;

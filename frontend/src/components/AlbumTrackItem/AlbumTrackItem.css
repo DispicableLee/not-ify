@@ -8,23 +8,37 @@
   padding: 10px;
   background-color: #282828; /* Spotify's background color for tracks */
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #333333; /* Darker background on hover */
+  gap: 10px; /* Darker background on hover */
   }
 
-  h3 {
-    margin: 0;
-    font-size: 14px;
-    color: #fff; /* Text color */
-    flex-grow: 1;
-    margin-left: 10px; /* Add spacing between icon/number and text */
+  #track-main img{
+    height: 40px;
   }
 
-  svg {
-    color: #1db954; /* Spotify's green color */
-    font-size: 20px;
+  #track-main:hover {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  background-color: #282828; /* Spotify's background color for tracks */
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Darker background on hover */
   }
+  
+.track-title{
+  margin-left: 10px;
+}
+
+
+
+
+svg {
+  color: #1db954; /* Spotify's green color */
+  font-size: 20px;
+}
+
+svg:hover {
+  cursor: pointer;
 }

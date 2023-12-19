@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import PlayArrow from "@mui/icons-material/PlayArrow";
 
-export default function AlbumTrackItem({id, title, url, listNum}){
+export default function AlbumTrackItem({id, title, url, image, listNum}){
     const [hover, setHover] = useState(false)
     const dispatch = useDispatch()
     // console.log(count)
@@ -28,13 +28,13 @@ export default function AlbumTrackItem({id, title, url, listNum}){
         <div 
             id="track-main" 
             role="button"
-            onClick={loadIntoSession} 
             onMouseEnter={() => setHover((prevHover) => !prevHover)}
             onMouseLeave={() => setHover((prevHover) => !prevHover)}
         >
 
-            {hover ? <PlayArrow/> : <h3>{listNum}</h3>}
-            <h3>{title}</h3>
+            {hover ? <PlayArrow onClick={loadIntoSession} /> : <h3>{listNum}</h3>}
+            <img src={image}/>
+            <h3 className="track-title">{title}</h3>
         </div>
     )
 }
