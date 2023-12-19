@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch()
+  const isSongLoaded = useSelector(store=>!!store.session.currentTrack)
   const signedInUser = useSelector(store=>store.session.user)
 
   useEffect(()=>{
@@ -30,7 +31,7 @@ function App() {
       {/* <Navigation /> */}
       {/* {signedInUser ? <LeftBar/> : <></>} */}
       {signedInUser && <LeftBar/> }
-      {signedInUser && <AudioFooter/>}
+      {signedInUser &&isSongLoaded && <AudioFooter/>}
         <Switch>
           <Route exact path="/login">
             <LoginFormPage />

@@ -95,7 +95,7 @@ export default function AudioFooter() {
         {/* ⁡⁢⁣⁢======== play button =============⁡ */}
         {track && 
             <div id="controls-progress">
-                <div>
+                <div className="backwards-pause-forwards">
                     <IconButton onClick={handleSkipBackward} disabled={!isReady} style={{color: "white"}}>
                         <SkipPreviousIcon />
                     </IconButton>

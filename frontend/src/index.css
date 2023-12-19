@@ -5,4 +5,5 @@
     width: 100vw;
     padding-top: 10px;
     background-color: black;
+    overflow: auto;
 }

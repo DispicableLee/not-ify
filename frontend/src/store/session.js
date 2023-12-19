@@ -150,7 +150,7 @@ const sessionReducer = (state = initialState, action) => {
     case RECIEVE_UPDATED_USER:
       return {...state, user: action.user}
     case REMOVE_CURRENT_USER:
-      return { ...state, user: null };
+      return { ...state, user: null, currentTrack: null };
     case SET_CURRENT_TRACK:
       return {...state, currentTrack: action.payload}
     case LOAD_PLAYLIST:

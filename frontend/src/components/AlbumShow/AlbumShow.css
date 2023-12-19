@@ -2,13 +2,8 @@
     width: 100%;
     background-image: linear-gradient(grey,black);
     padding: 20px;
+    overflow: hidden;
 }
-
-
-
-
-
-
 
 #album-show-header{
     width: 100%;
