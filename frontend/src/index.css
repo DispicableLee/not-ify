@@ -7,3 +7,11 @@
     background-color: black;
     overflow: auto;
 }
+
+#profile-button-container {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  margin: 10px;
+}

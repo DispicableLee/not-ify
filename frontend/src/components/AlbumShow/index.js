@@ -14,6 +14,7 @@ export default function AlbumShow(){
     const dispatch = useDispatch()
     const {id} = useParams()
     const shownAlbum = useSelector(store=>store.albums?.shownAlbum?.album)
+    const shownAlbumArtist = useSelector(store=>store?.albums?.shownAlbum?.album?.uploader?.username)
     const currentUser = useSelector(store=> store?.session?.user)
     const authorizedUser = shownAlbum?.uploaderId === currentUser?.id
     const [tracks, setTracks] = useState()
@@ -29,13 +30,15 @@ export default function AlbumShow(){
             })
         dispatch(fetchOneAlbum(id));
     }, [dispatch, setTracks]);
-    console.log(tracks)
+
+    
     const renderedTracks = tracks ? Object.values(tracks).map((track, idx) => (
         <AlbumTrackItem
             id={track.id}
             title={track.title}
             url={track.url}
             image={track.album.imageUrl}
+            uploader={track.uploader.username}
             listNum={idx + 1}
         />
     )) : null;
@@ -75,7 +78,10 @@ export default function AlbumShow(){
                         onChange={(e)=>setFormAlbumName(e.target.value)}
                         />
                     : 
-                        <h1>{shownAlbum?.title}</h1>
+                        <>
+                            <h1>{shownAlbum?.title}</h1>
+                            <p>{shownAlbumArtist}</p>
+                        </>
                     }
                     {authorizedUser && <button onClick={()=>setCanEdit(!canEdit)}>Edit Album</button>}
                     {canEdit && <button onClick={handleUpdate}>Save Changes</button>}

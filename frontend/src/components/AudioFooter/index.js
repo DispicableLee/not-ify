@@ -76,6 +76,7 @@ export default function AudioFooter() {
     return (
         <div id="audio-footer-main">
             <section id="track-info">
+                <img src={track?.image}/>
                 <h4>{track?.title}</h4>
             </section>
         {/* ⁡⁣⁢⁡⁢⁣⁢================== audio element =================================⁡⁡⁡ */}

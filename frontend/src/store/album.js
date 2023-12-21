@@ -91,8 +91,10 @@ const albumsReducer = (state ={}, action) =>{
         case RECEIVE_ALBUM:
             return { ...state, shownAlbum: action.album };
         case REMOVE_ALBUM:
-            const updatedAlbums = state.albums.filter(album => album.id !== action.album.id);
-            return { ...state, albums: updatedAlbums };
+            // debugger
+            // action.album.album.id
+            delete newState[action.album.album.id]
+            return newState;
         default:
             return newState
     }

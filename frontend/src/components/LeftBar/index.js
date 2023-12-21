@@ -17,9 +17,9 @@ export default function LeftBar(){
                 <Link to="/home">
                     <HomeIcon className="home-logo" />
                 </Link>
-                <Link to="/search">
+                {/* <Link to="/search">
                     <SearchIcon className="search-logo" />
-                </Link>
+                </Link> */}
             </section>
             <section id="playlist-list">
 

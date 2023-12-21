@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbums } from "../../store/album";
 import "./AlbumIndex.css"
 import AlbumCard from "./AlbumCard";
-
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 
 export default function AlbumIndex(props){
+    const [newAlbumModal, setNewAlbumModal] = useState(false)
     let dispatch = useDispatch()
     const albums = useSelector(store=>store?.albums?.albums|| {})
     console.log(Object.values(albums))
     useEffect(()=>{
         dispatch(fetchAlbums())
     },[dispatch])
-    // for(const a of albums) console.log(a)
 
     const renderedAlbumCard = Object.values(albums).map((a)=>
         <AlbumCard 
@@ -23,8 +23,15 @@ export default function AlbumIndex(props){
             image={a.imageUrl}
             />
     )
+
+
+
     return (
         <div id="index-div">
+            <div className="new-album">
+                <LibraryAddIcon/>
+                <h3>Add an album</h3>
+            </div>
             {renderedAlbumCard}
         </div>
     )

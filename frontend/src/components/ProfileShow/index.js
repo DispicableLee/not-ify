@@ -20,8 +20,6 @@ export default function ProfileShow(){
 
     return (
         <div id="profile-body">
-            <ProfileButton sessionUser={sessionUser}/>
-            <h5>Profile</h5>
             <h1>{sessionUser.username}</h1>
 
             <div id="profile-main-content">

@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 10px;
-  background-color: #282828; /* Spotify's background color for tracks */
+  /* background-color: #282828; Spotify's background color for tracks */
   border-radius: 5px;
   transition: background-color 0.3s ease;
   gap: 10px; /* Darker background on hover */
@@ -35,7 +35,7 @@
 
 
 svg {
-  color: #1db954; /* Spotify's green color */
+  color: white; /* Spotify's green color */
   font-size: 20px;
 }
 

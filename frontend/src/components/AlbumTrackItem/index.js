@@ -15,7 +15,8 @@ export default function AlbumTrackItem({id, title, url, image, listNum}){
         const trackObject = {
             id,
             title,
-            url
+            url,
+            image
         }
         dispatch(sessionActions.setCurrentTrack(trackObject))
     }

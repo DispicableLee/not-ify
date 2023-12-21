@@ -11,6 +11,7 @@ import AlbumShow from "./components/AlbumShow";
 import LeftBar from "./components/LeftBar";
 import AudioFooter from "./components/AudioFooter";
 import Navigation from "./components/Navigation";
+import ProfileButton from "./components/Navigation/ProfileButton";
 import "./reset.css"
 import "./index.css"
 import { useDispatch } from "react-redux";
@@ -30,6 +31,11 @@ function App() {
     <div id="home">
       {/* <Navigation /> */}
       {/* {signedInUser ? <LeftBar/> : <></>} */}
+      {signedInUser && 
+                        <div id="profile-button-container">
+                    <ProfileButton signedInUser={signedInUser}/>
+                </div>
+      }
       {signedInUser && <LeftBar/> }
       {signedInUser &&isSongLoaded && <AudioFooter/>}
         <Switch>

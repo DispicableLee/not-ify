@@ -2,6 +2,7 @@
     width: 100%;
     background-image: linear-gradient(grey,black);
     padding: 20px;
+    padding-bottom: 20px;
     overflow: hidden;
 }
 
