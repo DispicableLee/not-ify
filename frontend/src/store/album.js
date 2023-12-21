@@ -47,8 +47,6 @@ export const fetchAlbums = () => async (dispatch) =>{
 };
 
 export const fetchOneAlbum = (albumId) => async dispatch =>{
-    // console.log(albumId.id)
-    // debugger
     const res = await csrfFetch(`/api/albums/${albumId}`)
     if(res.ok){
         let data = await res.json()

@@ -23,10 +23,10 @@ export default function AlbumShow(){
     const [formAlbumName, setFormAlbumName] = useState(shownAlbum?.title)
 
     useEffect(() => {
-        fetch(`/api/albums/${id}`)
+        csrfFetch(`/api/albums/${id}`)
             .then((res) => res.json())
             .then((json) => {
-                if(json.tracks) setTracks(Object.values(json.tracks)); // Use an empty array if tracks are undefined
+                if(json.tracks) setTracks(Object.values(json.tracks)); 
             })
         dispatch(fetchOneAlbum(id));
     }, [dispatch, setTracks]);
