@@ -3,6 +3,7 @@ import "./LeftBar.css"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
+import ListIcon from '@mui/icons-material/List';
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 export default function LeftBar(){
@@ -17,9 +18,9 @@ export default function LeftBar(){
                 <Link to="/home">
                     <HomeIcon className="home-logo" />
                 </Link>
-                {/* <Link to="/search">
-                    <SearchIcon className="search-logo" />
-                </Link> */}
+                <Link to="/tracks/all">
+                    <ListIcon className="search-logo" />
+                </Link>
             </section>
             <section id="playlist-list">
 

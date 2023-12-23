@@ -11,6 +11,7 @@ import AlbumShow from "./components/AlbumShow";
 import LeftBar from "./components/LeftBar";
 import AudioFooter from "./components/AudioFooter";
 import Navigation from "./components/Navigation";
+import TrackIndex from "./components/TrackIndex/TrackIndex";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import "./reset.css"
 import "./index.css"
@@ -53,6 +54,9 @@ function App() {
           </Route>
           <Route exact path="/album/:id">
               <AlbumShow/>
+          </Route>
+          <Route exact path="/tracks/all">
+            <TrackIndex/>
           </Route>
         </Switch>
     </div>

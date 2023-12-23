@@ -18,9 +18,13 @@ h1 {
 }
 
 .other-projects{
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: 20%;
-  margin-top: 5%
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 5px;
 }
 
 .project-link-card{
@@ -29,11 +33,35 @@ h1 {
   align-items: flex-start;
   justify-content: flex-start;
   border: 1px solid white;
-  /* height: 45%; */
+  height: 35%;
   width: 30%;
   text-decoration: none;
   color: white;
   padding: 10px;
+}
+
+
+#social-link{
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 30%;
+  height: 35%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px 10px 5px 10px;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+
+.github{
+  background: #6e5494;
+}
+
+.linkedin{
+  background: #0078c7;
 }
 
 

@@ -38,7 +38,7 @@ export default function AlbumShow(){
             title={track.title}
             url={track.url}
             image={track.album.imageUrl}
-            uploader={track.uploader.username}
+            uploaderUsername={track.uploader.username}
             listNum={idx + 1}
         />
     )) : null;
