@@ -9,8 +9,12 @@ import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 export default function AlbumIndex(props){
     const [newAlbumModal, setNewAlbumModal] = useState(false)
     let dispatch = useDispatch()
+    const currentUser = useSelector(store=>store.session.user)
     const albums = useSelector(store=>store?.albums?.albums|| {})
-    console.log(Object.values(albums))
+// ⁡⁢⁣⁣==================== new album form fields =================================⁡
+    const [newAlbumTitle, setNewAlbumTitle] = useState()
+    const [newAlbumDescription, setNewAlbumDescription] = useState()
+    const [newAlbumImage, setNewAlbumImage] = useState()
     useEffect(()=>{
         dispatch(fetchAlbums())
     },[dispatch])
@@ -23,6 +27,40 @@ export default function AlbumIndex(props){
             image={a.imageUrl}
             />
     )
+
+    const renderedNewAlbumModal = () =>{
+        return (
+            <div id="new-album-modal">
+                {/* title, imageUrl, uploaderId, description */}
+                <form>
+                    <input type="text"
+                        onChange={(e)=>setNewAlbumTitle(e.target.value)}
+                    />
+                    <input type="text"
+                        onChange={(e)=>setNewAlbumDescription(e.target.value)}
+                    />
+                    <input type="text"
+                        onChange={(e)=>setNewAlbumImage(e.target.value)}
+                    />
+                    <input type="submit"/>
+                </form>
+            </div>
+        )
+    }
+
+    function handleCreateNewAlbum(e){
+        e.preventDefault()
+        const newAlbumObj = {
+            title: newAlbumTitle,
+            uploaderId: currentUser.id,
+            description: newAlbumDescription,
+            imageUrl: newAlbumImage
+        }
+
+
+
+        
+    }
 
 
 

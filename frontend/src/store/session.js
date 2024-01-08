@@ -21,7 +21,7 @@ export const skipBackward = () => ({
   type: 'SKIP_BACKWARD',
 });
 
-const setCurrentUser = (user) => {
+const \setCurrentUser = (user) => {
   return {
     type: SET_CURRENT_USER,
     payload: user

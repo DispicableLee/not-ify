@@ -97,7 +97,7 @@ export default function AudioFooter() {
         </audio>
         {/* =============================================== */}
         {/* ⁡⁢⁣⁢======== play button =============⁡ */}
-        {track && 
+{track && 
             <div id="controls-progress">
                 <div className="backwards-pause-forwards">
                     <IconButton onClick={handleSkipBackward} disabled={!isReady} style={{color: "white"}}>
@@ -113,7 +113,7 @@ export default function AudioFooter() {
                         <SkipNextIcon />
                     </IconButton>
                 </div>
-
+                {/* ⁡⁢⁣⁢progress bar⁡ */}
                 <section className="progress-bar-holder">
                     {/* Use the formatTime function for displaying time */}
                     <h4>{formatTime(audioRef.current?.currentTime)}</h4>
@@ -130,7 +130,7 @@ export default function AudioFooter() {
                         
                 </section>
             </div>
-        }
+        }        
         </div>
     );
 }

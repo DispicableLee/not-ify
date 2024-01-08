@@ -1,6 +1,17 @@
 import csrfFetch from "./csrf";
 import { loadPlaylist } from "./session";
 
+
+
+// ⁡⁣⁢⁣================ create album =========================⁡
+export const createAlbum = (albumObj) => async (dispatch)=>{
+    const res = await csrfFetch('/api/albums',{
+        method: "POST",
+        body: JSON.stringify(albumObj)
+    })
+    const data = res.json()
+}
+
 export const RECEIVE_ALBUMS = 'albums/RECIEVE_ALBUMS'
 const recieveAlbums = albums => ({
     type: RECEIVE_ALBUMS,
