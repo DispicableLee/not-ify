@@ -64,7 +64,8 @@ export default function AlbumIndex(props){
         }
 
         dispatch(createAlbum(newAlbumObj))
-        history.push("/")
+        setNewAlbumModal(false)
+        history.push("/home")
     }
 
 

@@ -26,12 +26,15 @@ export default function ProfileShow(){
 
 
     const renderedUserAlbums = userAlbums?.map((album)=>{
-        <AlbumCard 
-            id={album.id}
-            title={album.title}
-            description={album.description}
-            image={album.imageUrl}
-        />
+        return (
+            <AlbumCard 
+                id={album.id}
+                title={album.title}
+                description={album.description}
+                image={album.imageUrl}
+            />
+
+        )
     })
 
     return (
@@ -42,6 +45,7 @@ export default function ProfileShow(){
                 <UpdateInfoModal sessionUser={sessionUser} onUserUpdate={handleUserUpdate}/>
                 <h2>{userAlbums?.length} Albums</h2>
                 <div id="profile-album-index-div"> 
+                    <h2>hi</h2>
                     {renderedUserAlbums}
                 </div>
             </div>

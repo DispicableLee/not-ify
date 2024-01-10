@@ -84,7 +84,7 @@ h3{
 #profile-album-index-div{
   width: 100%;
   border: 1px solid white;
-  height: 20%;
+  height: 40%;
   display: flex;
   flex-wrap: wrap;
 }

@@ -3,6 +3,16 @@ import { loadPlaylist } from "./session";
 
 
 
+
+
+
+export const RECEIVE_NEW_ALBUM = '/albums/RECEIVE_NEW_ALBUM'
+const receiveNewAlbum = album => ({
+    type: RECEIVE_NEW_ALBUM,
+    album
+})
+
+
 // ⁡⁣⁢⁣================ create album =========================⁡
 export const createAlbum = (albumObj) => async (dispatch)=>{
     const res = await csrfFetch('/api/albums',{
@@ -10,7 +20,7 @@ export const createAlbum = (albumObj) => async (dispatch)=>{
         body: JSON.stringify({album: albumObj})
     })
     const data = await res.json()
-    dispatch(receiveAlbum(data))
+    dispatch(receiveNewAlbum(data))
 }
 
 export const RECEIVE_ALBUMS = 'albums/RECIEVE_ALBUMS'
@@ -97,9 +107,15 @@ const albumsReducer = (state ={}, action) =>{
     let newState = {...state}
     switch(action.type){
         case RECEIVE_ALBUMS:
+            console.log(action.albums)
             return {...state, albums: action.albums}
-        case RECEIVE_ALBUM:
+        case RECEIVE_ALBUM: 
             return { ...state, shownAlbum: action.album };
+        case RECEIVE_NEW_ALBUM:
+            console.log("old state albums", newState.albums)
+            console.log(action.album)
+            const newStateAlbums = {albums: {...newState.albums, [action.album.album.id]:action.album.album}}
+            return newStateAlbums
         case REMOVE_ALBUM:
             // debugger
             // action.album.album.id
