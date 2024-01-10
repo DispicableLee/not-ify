@@ -1,14 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAlbums, getAlbums } from "../../store/album";
+import { fetchAlbums, getAlbums, createAlbum } from "../../store/album";
 import "./AlbumIndex.css"
 import AlbumCard from "./AlbumCard";
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function AlbumIndex(props){
     const [newAlbumModal, setNewAlbumModal] = useState(false)
     let dispatch = useDispatch()
+    const history = useHistory()
     const currentUser = useSelector(store=>store.session.user)
     const albums = useSelector(store=>store?.albums?.albums|| {})
 // ⁡⁢⁣⁣==================== new album form fields =================================⁡
@@ -32,15 +34,19 @@ export default function AlbumIndex(props){
         return (
             <div id="new-album-modal">
                 {/* title, imageUrl, uploaderId, description */}
-                <form>
+                <div className="x" onClick={()=>setNewAlbumModal(false)}>X</div>
+                <form onSubmit={(e)=>handleCreateNewAlbum(e)}>
                     <input type="text"
                         onChange={(e)=>setNewAlbumTitle(e.target.value)}
+                        placeholder="Title"
                     />
                     <input type="text"
                         onChange={(e)=>setNewAlbumDescription(e.target.value)}
+                        placeholder="Description"
                     />
                     <input type="text"
                         onChange={(e)=>setNewAlbumImage(e.target.value)}
+                        placeholder="Image Url (optional)"
                     />
                     <input type="submit"/>
                 </form>
@@ -57,16 +63,22 @@ export default function AlbumIndex(props){
             imageUrl: newAlbumImage
         }
 
-
-
-        
+        dispatch(createAlbum(newAlbumObj))
+        history.push("/")
     }
 
 
 
     return (
         <div id="index-div">
-            <div className="new-album">
+
+            {newAlbumModal && renderedNewAlbumModal()}
+
+
+
+            <div className="new-album"
+                onClick={()=>setNewAlbumModal(true)}
+            >
                 <LibraryAddIcon/>
                 <h3>Add an album</h3>
             </div>

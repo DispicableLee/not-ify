@@ -7,9 +7,10 @@ import { loadPlaylist } from "./session";
 export const createAlbum = (albumObj) => async (dispatch)=>{
     const res = await csrfFetch('/api/albums',{
         method: "POST",
-        body: JSON.stringify(albumObj)
+        body: JSON.stringify({album: albumObj})
     })
-    const data = res.json()
+    const data = await res.json()
+    dispatch(receiveAlbum(data))
 }
 
 export const RECEIVE_ALBUMS = 'albums/RECIEVE_ALBUMS'

@@ -10,6 +10,12 @@ const recieveUser = user => ({
     user
 })
 
+export const findUserFromDatabase = userId => async dispatch => {
+  const res = await csrfFetch(`/api/users/${userId}`)
+  const data = await res.json()
+  dispatch(recieveUser(data.user))
+}
+
 
 
 
@@ -17,13 +23,13 @@ const recieveUser = user => ({
 
 
 
-
-export default function userReducer(state = {}, action) {
+const userReducer = (state = {}, action) =>{
   switch (action.type) {
     case RECIEVE_USER:
-        console.log(action)
-      return { ...state, [action.user.id]: action.user };
+      return { ...state, shownUser: action.user };
     default:
       return state;
   }
 }
+
+export default userReducer

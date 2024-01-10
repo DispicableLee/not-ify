@@ -14,6 +14,7 @@ class Api::AlbumsController < ApplicationController
 
     def create 
         @album = Album.new(album_params)
+        # debugger
         if @album.save
             render :show
         else
@@ -40,6 +41,6 @@ class Api::AlbumsController < ApplicationController
 
     private
     def album_params
-        params.require(:album).permit(:title, :uploader_id, :description)
+        params.require(:album).permit(:title, :uploader_id, :description, :image_url)
     end
 end

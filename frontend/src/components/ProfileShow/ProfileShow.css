@@ -78,3 +78,13 @@ h3{
   padding: 10px;
   border-radius: 4px;
 }
+
+
+
+#profile-album-index-div{
+  width: 100%;
+  border: 1px solid white;
+  height: 20%;
+  display: flex;
+  flex-wrap: wrap;
+}

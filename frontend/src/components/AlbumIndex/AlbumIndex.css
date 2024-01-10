@@ -58,14 +58,35 @@ h4 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.new-album:hover{
-    transform: scale(1.05);
-}
+/* .new-album:hover{
+    cursor: pointer;
+} */
 
 .new-album svg {
   width: 50%; /* Adjust the width of the icon as needed */
   height: 50%; /* Adjust the height of the icon as needed */
   fill: #fff; /* Set the fill color of the icon */
+  cursor: pointer;
+}
+
+
+
+#new-album-modal{
+  border: 1px solid white;
+  position: absolute;
+  opacity: 100%;
+  background-color: black;
+}
+
+#new-album-modal .x{
+  position: fixed;
+  right: 0;
+  margin: 5px;
+}
+
+#new-album-modal .x:hover{
+  background-color: red;
 }
