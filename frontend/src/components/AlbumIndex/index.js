@@ -27,6 +27,7 @@ export default function AlbumIndex(props){
             title={a.title}
             description={a.description}
             image={a.imageUrl}
+            uploaderUsername={a.uploaderUsername}
             />
     )
 

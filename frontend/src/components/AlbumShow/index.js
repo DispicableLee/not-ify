@@ -101,6 +101,11 @@ export default function AlbumShow(){
             <br/>
             <br/>
             <div id="track-index">
+                <div className="track-index-heading-bar">
+                    <p>#</p>
+                    <p>title</p>
+
+                </div>
                 {renderedTracks}
             </div>
         </div>

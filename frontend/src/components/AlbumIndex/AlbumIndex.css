@@ -24,7 +24,7 @@
   transform: scale(1.05);
 }
 
-.card-box div {
+.card-box.div {
   width: 100%;
   overflow: hidden;
   border-radius: 8px;
@@ -34,7 +34,7 @@
 #card-image{
     width: 100px;
     border-radius: 5px;
-    height: 70%;
+    height: 100px;
     margin-bottom: 10px;
 }
 

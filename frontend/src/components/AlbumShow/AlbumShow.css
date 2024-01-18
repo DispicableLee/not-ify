@@ -51,14 +51,13 @@ h1{
 
 }
 
-.confirm-delete-div .bottom-bar{
-
-}
-
-.cancel-delete-button:hover{
-
-}
-
 .confirm-delete-button{
     background-color: red;
+}
+
+.track-index-heading-bar{
+    border-bottom: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
 }
