@@ -45,7 +45,6 @@ export default function ProfileShow(){
                 <UpdateInfoModal sessionUser={sessionUser} onUserUpdate={handleUserUpdate}/>
                 <h2>{userAlbums?.length} Albums</h2>
                 <div id="profile-album-index-div"> 
-                    <h2>hi</h2>
                     {renderedUserAlbums}
                 </div>
             </div>

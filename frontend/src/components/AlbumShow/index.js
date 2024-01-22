@@ -71,7 +71,7 @@ export default function AlbumShow(){
                     flexDirection: "column",
                     gap: "5px"
                 }}>
-                    <p>Album</p>
+                    <h3>Album</h3>
                     {canEdit ? 
                         <input type="text"
                         defaultValue={shownAlbum?.title}
@@ -80,7 +80,7 @@ export default function AlbumShow(){
                     : 
                         <>
                             <h1>{shownAlbum?.title}</h1>
-                            <p>{shownAlbumArtist}</p>
+                            <h3>{shownAlbumArtist}</h3>
                         </>
                     }
                     {authorizedUser && <button onClick={()=>setCanEdit(!canEdit)}>Edit Album</button>}

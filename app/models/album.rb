@@ -19,4 +19,5 @@ class Album < ApplicationRecord
         foreign_key: :uploader_id
         
     has_many :tracks, dependent: :destroy
+    accepts_nested_attributes_for :tracks
 end
