@@ -112,8 +112,6 @@ const albumsReducer = (state ={}, action) =>{
         case RECEIVE_ALBUM: 
             return { ...state, shownAlbum: action.album };
         case RECEIVE_NEW_ALBUM:
-            console.log("old state albums", newState.albums)
-            console.log(action.album)
             const newStateAlbums = {albums: {...newState.albums, [action.album.album.id]:action.album.album}}
             return newStateAlbums
         case REMOVE_ALBUM:
