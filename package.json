@@ -6,7 +6,7 @@
     "lib": "lib"
   },
   "engines": {
-    "node": "16.x"
+    "node": "20.x"
   },
   "scripts": {
     "build": "npm install --prefix frontend && npm run build --prefix frontend"
