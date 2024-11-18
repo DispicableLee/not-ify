@@ -10,11 +10,11 @@ export default function FeedMain({signedInUser}){
     return (
         <div 
             id="feed-main"
-            >
+        >
                 {/* <div id="profile-button-container">
                     <ProfileButton signedInUser={signedInUser}/>
                 </div> */}
-                <h2>Good Morning</h2>
+                <h1 id="white-h1">Good Morning</h1>
                 <div className="other-projects">
 
                     {/* <div className="project-link-card">

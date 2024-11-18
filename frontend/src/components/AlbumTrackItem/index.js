@@ -33,8 +33,9 @@ export default function AlbumTrackItem({id, title, url, image, listNum, uploader
             onMouseEnter={() => setHover((prevHover) => !prevHover)}
             onMouseLeave={() => setHover((prevHover) => !prevHover)}
         >
-
-            {hover ? <PlayArrow onClick={loadIntoSession} /> : <h3>{listNum}</h3>}
+            <div className="playbtn-num">
+                {hover ? <PlayArrow onClick={loadIntoSession} /> : <h4 className="track-number">{listNum}</h4>}
+            </div>
             <img src={image}/>
             <div className="title-artist">
                 <h3 className="track-title">{title}</h3>

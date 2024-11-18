@@ -2,7 +2,7 @@
   background-color: #121212; /* Spotify's background color */
   color: #fff; /* Text color, white for contrast */
   padding: 20px;
-  height: 83%;
+  height: -webkit-fill-available;
   /* border: 1px solid white */
 }
 

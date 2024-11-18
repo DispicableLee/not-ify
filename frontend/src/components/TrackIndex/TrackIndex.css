@@ -2,6 +2,7 @@
     /* border: 1px solid white; */
     border-radius: 10px;
     width: 100vw;
-    height: 86%;
-    background-color: #121212
+    height: -webkit-fill-available;
+    background-color: #121212;
+    padding: 10px;
 }

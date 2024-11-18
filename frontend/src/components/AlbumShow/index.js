@@ -31,7 +31,7 @@ export default function AlbumShow(){
         dispatch(fetchOneAlbum(id));
     }, [dispatch, setTracks]);
 
-    
+
     const renderedTracks = tracks ? Object.values(tracks).map((track, idx) => (
         <AlbumTrackItem
             id={track.id}
@@ -71,7 +71,7 @@ export default function AlbumShow(){
                     flexDirection: "column",
                     gap: "5px"
                 }}>
-                    <h3>Album</h3>
+                    <h3 className="subheader-label">Album</h3>
                     {canEdit ? 
                         <input type="text"
                         defaultValue={shownAlbum?.title}
@@ -80,12 +80,12 @@ export default function AlbumShow(){
                     : 
                         <>
                             <h1>{shownAlbum?.title}</h1>
-                            <h3>{shownAlbumArtist}</h3>
+                            <h3 className="subheader-label">{shownAlbumArtist}</h3>
                         </>
                     }
                     {authorizedUser && <button onClick={()=>setCanEdit(!canEdit)}>Edit Album</button>}
-                    {canEdit && <button onClick={handleUpdate}>Save Changes</button>}
                     {authorizedUser ? <button onClick={()=>setCanDelete(true)}>Delete Album</button> : <></>}
+                    {canEdit && <button onClick={handleUpdate}>Save Changes</button>}
                 </div>
                 {canDelete && <div className="confirm-delete-div">
                         <h2>Are you sure you want to delete this album?</h2>

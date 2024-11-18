@@ -15,7 +15,7 @@ export default function TrackIndex(){
     },[dispatch])
 
 
-    const renderedTracks = displayedTracks ? displayedTracks.map((track, idx) => (
+    const renderedTracks = displayedTracks?.map((track, idx) => (
         <AlbumTrackItem
             id={track.id}
             title={track.title}
@@ -24,12 +24,12 @@ export default function TrackIndex(){
             uploaderUsername={track.uploader.username}
             listNum={idx + 1}
         />
-    )) : null;
+    )) 
 
     return (
         <div id="track-index-main">
 
-            <h1>track Index</h1>
+            <h1 id="white-h1">Track Index</h1>
             {renderedTracks}
         </div>
     )

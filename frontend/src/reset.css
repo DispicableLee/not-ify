@@ -4,21 +4,36 @@
 }
 
 @font-face {
-    font-family: 'Circular Book';
-    src: local('Circular Book'), url(./components/styling/fonts/Circular_Spotify_Font/CircularSpotifyText-Book.otf) format("opentype");
+    font-family: 'Circular Spotify Book';
+    src: local('Circular Spotify Book'), url(./components/styling/fonts/Circular_Spotify_Font/CircularSpotifyText-Book.otf) format("opentype");
 }
 
-h1{
-	font-family: 'Circular Spotify Bold';
+@font-face{
+	font-family: 'Circular Spotify Light';
+	src: local('Circular Spotify Light'), url(./components/styling/fonts/Circular_Spotify_Font/CircularSpotifyText-Light.otf);
 }
-
-
 
 h2, h3, h4, h5, h6, p{
 	font-family: 'Circular Book';
 	color: white;
 	margin: 0
 }
+
+h1{
+	font-family: 'Circular Spotify Bold';
+	margin: 0;
+}
+
+.subheader-label{
+	font-family: 'Circular Spotify Light';
+}
+
+.track-number{
+	margin: 5px;
+}
+
+
+
 
 
 
