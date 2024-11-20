@@ -18,19 +18,33 @@ export default function AudioFooter() {
     const track = useSelector((store) => store.session.currentTrack);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
-
+    const [volume, setVolume] = useState(0.5)
     const [isReady, setIsReady] = React.useState(false);
     const [isPlaying, setIsPlaying] = React.useState(false);
 
     let audioRef = useRef(null)
 
-      // New function for formatting time
+
+    // function to handle changing volume
+    function handleVolume(volume){
+        setVolume(parseFloat(volume))
+        let audio = document.getElementById("audio")
+        audio.volume = volume
+    }
+
+
+
+
+
+
+      // Function for formatting time
     const formatTime = (timeInSeconds) => {
         const minutes = Math.floor(timeInSeconds / 60);
         const seconds = Math.floor(timeInSeconds % 60);
         return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
     };
 
+    // handlers for changing tracks
     const handleSkipForward = () => {
         dispatch(skipForward());
     };
@@ -91,13 +105,15 @@ export default function AudioFooter() {
             onCanPlay={(e) => setIsReady(true)}
             onPlaying={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
+            volume={volume}
             autoPlay
         >
             <source type="audio/mpeg" src={track?.url} />
         </audio>
         {/* =============================================== */}
         {/* ⁡⁢⁣⁢======== play button =============⁡ */}
-{track && 
+    {track && 
+        <>
             <div id="controls-progress">
                 <div className="backwards-pause-forwards">
                     <IconButton onClick={handleSkipBackward} disabled={!isReady} style={{color: "white"}}>
@@ -130,6 +146,17 @@ export default function AudioFooter() {
                         
                 </section>
             </div>
+            <div className="volume"> 
+                <input
+                    type="range"
+                    min={0}
+                    max={1}
+                    step={0.2}
+                    value={volume}
+                    onChange={(e)=>{handleVolume(e.target.value)}}
+                />
+            </div>
+        </>
         }        
         </div>
     );
